@@ -36,6 +36,11 @@ namespace Project_Algorithm
         {
 
         }
-        
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            FormBook b = new FormBook();
+            b.ShowDialog();
+        }
     }
 }

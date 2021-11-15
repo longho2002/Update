@@ -9,3 +9,4 @@ D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.c
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.csproj.CoreCompileInputs.cache
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.exe
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.pdb
+D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.FormBook.resources
