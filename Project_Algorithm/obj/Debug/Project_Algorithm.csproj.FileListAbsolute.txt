@@ -1,0 +1,11 @@
+D:\Project _ck\Project_Algorithm\Project_Algorithm\bin\Debug\Project_Algorithm.exe.config
+D:\Project _ck\Project_Algorithm\Project_Algorithm\bin\Debug\Project_Algorithm.exe
+D:\Project _ck\Project_Algorithm\Project_Algorithm\bin\Debug\Project_Algorithm.pdb
+D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.csproj.AssemblyReference.cache
+D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.csproj.SuggestedBindingRedirects.cache
+D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.Form1.resources
+D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.Properties.Resources.resources
+D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.csproj.GenerateResource.cache
+D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.csproj.CoreCompileInputs.cache
+D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.exe
+D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.pdb
