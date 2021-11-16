@@ -6,13 +6,26 @@ using System.Windows.Forms;
 
 namespace Project_Algorithm
 {
-    internal static class Program
+    public struct book
+    {
+        public string maSach; //MS01
+        public string tenSach; //
+        public string TacGia; // nguyen quoc trung
+        public string ChuDe; //
+        public string NXB; // 
+        public int price;
+        public string vt; // vitri // A-1 split('-') tryParse
+        public DateTime NgXB;
+        public string imgSrc;
+    }
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// 
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -20,3 +33,6 @@ namespace Project_Algorithm
         }
     }
 }
+
+
+
