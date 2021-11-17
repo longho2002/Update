@@ -135,11 +135,14 @@
             this.CB_timkiem.FormattingEnabled = true;
             this.CB_timkiem.ItemHeight = 31;
             this.CB_timkiem.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
+            "Mã sách",
+            "Tên sách",
+            "Tác giả",
+            "Nhà xuất bản",
+            "Giá",
+            "Chủ đề",
+            "Vị trí",
+            "Ngày xuất bản"});
             this.CB_timkiem.Location = new System.Drawing.Point(172, 230);
             this.CB_timkiem.Name = "CB_timkiem";
             this.CB_timkiem.Size = new System.Drawing.Size(210, 39);
@@ -254,6 +257,15 @@
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.ItemHeight = 31;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Mã sách",
+            "Tên sách",
+            "Tác giả",
+            "Nhà xuất bản",
+            "Giá",
+            "Chủ đề",
+            "Vị trí",
+            "Ngày xuất bản"});
             this.comboBox1.Location = new System.Drawing.Point(172, 171);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(210, 39);

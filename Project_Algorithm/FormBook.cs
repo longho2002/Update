@@ -51,14 +51,14 @@ namespace Project_Algorithm
             temp.TacGia = textBox3.Text;
             temp.ChuDe = textBox4.Text;
             temp.ChuDe = textBox7.Text;
-            temp.NXB = textBox5.Text == "" ? (Application.StartupPath + "\\Resources\\" + "noneimg.png") : imageLocation;
+            temp.NXB = textBox5.Text;
             int a = 0;
             if (int.TryParse(textBox6.Text, out a))
             {
                 temp.Price = a;
             };
-            temp.ImgSrc = imageLocation;
-            temp.NgXB = new DateTime(2019 / 1 / 1);
+            temp.ImgSrc = imageLocation == "" ? (Application.StartupPath + "\\Resources\\" + "noneimg.png") : imageLocation;
+            temp.NgXB = dateTimePicker1.Value;
             if (textBox1.Text == "" && textBox2.Text == "" && textBox3.Text == "" && textBox4.Text == "" &&
                 textBox5.Text == "" && textBox6.Text == "")
             {
@@ -93,19 +93,8 @@ namespace Project_Algorithm
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            p.Data.MaSach = textBox1.Text;
-            p.Data.TenSach = textBox2.Text;
-            p.Data.TacGia = textBox3.Text;
-            p.Data.ChuDe = textBox4.Text;
-            p.Data.NXB = textBox5.Text;
-            p.Data.VT = textBox7.Text;
-            int a;
-            if (int.TryParse(textBox6.Text, out a))
-            {
-                p.Data.Price = a;
-            }
-            p.Data.NgXB = dateTimePicker1.Value;
-            p.Data.ImgSrc = textBox5.Text == "" ? (Application.StartupPath + "\\Resources\\" + "noneimg.png") : imageLocation;
+           Form1.a.Remove(Form1.slide);
+           this.Close();
         }
         protected void showForm()
         {

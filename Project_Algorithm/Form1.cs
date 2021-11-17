@@ -73,6 +73,7 @@ namespace Project_Algorithm
             flag = true;
             FormBook b = new FormBook();
             b.ShowDialog();
+            displayTag();
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -139,6 +140,8 @@ namespace Project_Algorithm
 
         public void showForm(object sender, EventArgs e)
         {
+            // luu tru dia chi hien tai
+            int x = PannelDisplayForm1.HorizontalScroll.Value;
             flag = false;
             Panel p;
             if (sender.GetType() == typeof(Panel))
@@ -162,6 +165,8 @@ namespace Project_Algorithm
             }
             FormBook b = new FormBook();
             b.ShowDialog();
+            displayTag();
+            PannelDisplayForm1.HorizontalScroll.Value = x;
         }
 
         private void button2_Click(object sender, EventArgs e)

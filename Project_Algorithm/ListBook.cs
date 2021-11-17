@@ -91,26 +91,24 @@ namespace Project_Algorithm
         {
             int n = Len();
             Node p, q = null;
-            book x;
-            if (index < 1 || index > n)
+            if (index < 0 || index > n)
                 return;
             if (index == 0)
             {
                 p = this.root;
                 this.root = this.root.Next;
-                x = p.Data;
                 p = null;
             }
             else
             {
                 p = this.root;
-                for (int i = 0; i < index - 1; i++)
+                q = p.Next;
+                for (int i = 0; i < index; i++)
                 {
                     q = p;
                     p = p.Next;
                 }
                 q.Next = p.Next;
-                x = p.Data;
                 p = null;
             }
         }
