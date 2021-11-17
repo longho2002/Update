@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,29 +15,38 @@ namespace Project_Algorithm
     public partial class Form1 : Form
     {
         public static ListBook a = new ListBook();
-
-
+        public static bool flag = true;
+        public static int slide; 
         public TextBox tb1 = new TextBox();
         public Form1()
         {
             InitializeComponent();
-            book temp = new book();
-            temp.maSach = "001";
-            temp.tenSach = "Nhà giả kim";
-            temp.TacGia = "Quốc Trung";
-            temp.ChuDe = "Triết học";
-            temp.NXB = "Kim Đồng";
-            temp.price = 290000;
-            temp.vt = "A-03";
-            temp.imgSrc = "C:/Users/Thai_Long/Downloads/giakim.jpg";
-            temp.NgXB = new DateTime(2019, 1, 1);
-            for (int i = 0; i < 20; i++)
-            {
-                a.Push(temp);
-            }
+            pushData();
             displayTag();
         }
 
+        private void pushData()
+        {
+            a.Push(new book("001", "Code dạo ký sự", "Phạm Huy Hoàng", "Lập trình", "Dân Trí", 119000, "A-04", new DateTime(2017, 01, 01), Application.StartupPath + "\\Resources\\" + "code dao ky su.jpg"));
+            a.Push(new book("002", "Ngày xưa có một chuyện tình", "Nguyễn Nhật Ánh", "Văn học", "Kim Đồng", 110000, "A-06", new DateTime(2017, 10, 24), Application.StartupPath + "\\Resources\\" + "ngay xua co 1 chuyen tinh.jpg"));
+            a.Push(new book("003", "Tôi thấy hoa vàng trên cỏ xanh", "Nguyễn Nhật Ánh", "Văn học", "Kim Đồng", 150000, "A-06", new DateTime(2018, 08, 14), Application.StartupPath + "\\Resources\\" + "toi thay hoa vang tren co xanh.jpg"));
+            a.Push(new book("004", "Đắc Nhân Tâm", "Dale Carnegie", "Triết học", "Tổng Hợp", 70000, "A-01", new DateTime(2008, 9, 12), Application.StartupPath + "\\Resources\\" + "dac nhan tam.jpg"));
+            a.Push(new book("005", "300 Bài code thiếu nhi", "Nhiều tác giả", "Lập trình", "Tổng hợp", 100000, "A-02", new DateTime(2018, 5, 27), Application.StartupPath + "\\Resources\\" + "code thieu nhi.jpg"));
+            a.Push(new book("006", "Tuổi trẻ đáng giá bao nhiêu", "Quốc Trung", "Văn học", "Hội nhà văn", 700000, "A-04", new DateTime(2019, 1, 15), Application.StartupPath + "\\Resources\\" + "tuoi tre dang gia bao nhieu.jpg"));
+            a.Push(new book("007", "Cho tôi xin một vé đi tuổi thơ", "Nguyễn Nhật Ánh", "Văn học", "Kim Đồng", 108000, "A - 06",  new DateTime(2019, 05, 06), Application.StartupPath + "\\Resources\\" + "cho toi xin 1 ve di tuoi tho.jpg"));
+            a.Push(new book("008", "Đời thay đổi khi chúng ta thay đổi", " Andrew Matthews", "Văn học", "Trẻ", 50000, "A - 04",  new DateTime(2019, 04, 28), Application.StartupPath + "\\Resources\\" + "doi thay doi khi chung ta thay doi.jpg"));
+            a.Push(new book("009", "Cô gái đến từ hôm qua", "Nguyễn Nhật Ánh", "Văn học", "Trẻ ", 68000, "A-04", new DateTime(2017, 06, 10), Application.StartupPath + "\\Resources\\" + "cô gái đén từ hôm qua.jpg"));
+            a.Push(new book("010", "Khi hơi thở hóa thinh không", "Pual Kalathini", "Hồi kí", "Omega plus", 872000, "A-01", new DateTime(2016, 1, 12), Application.StartupPath + "\\Resources\\" + "KHI HƠI THỞ HÓA THINH KHÔNG.jpg"));
+            a.Push(new book("011", "Đi tìm lẽ sống", "Viktor Frankl", "Tâm lý học", "Tổng Hợp ", 70200, "A-01", new DateTime(2016, 07, 01), Application.StartupPath + "\\Resources\\" + "di-tim-le-song.jpg"));
+            a.Push(new book("012", "Phi lí một cách hợp lí", "Dan Ariely", "Tâm lý học", "Thế giới ", 74250, "A-02", new DateTime(2016, 08, 06), Application.StartupPath + "\\Resources\\" + "phi ly mot cach hop ly.jpg"));
+            a.Push(new book("013", "Cánh đồng bất tận ", "Nguyễn Ngọc Tư", "Văn học", "Trẻ ", 68000, "A-06", new DateTime(2006, 1, 1), Application.StartupPath + "\\Resources\\" + "Canh-dong-bat-tan.jpg"));
+            a.Push(new book("014", "Tôi đi học", "Nguyễn Ngọc Kí", "Tự truyện", "Tổng hợp ", 43200, "A-05", new DateTime(2019, 09, 10), Application.StartupPath + "\\Resources\\" + "toi di hoc.jpg"));
+            a.Push(new book("015", "Những tâm hồn dấu yêu", "Nguyễn Ngọc Ký", "Tự truyện", "Trẻ ", 99750, "A-04", new DateTime(2012, 02, 9), Application.StartupPath + "\\Resources\\" + "nhung_tam_hon_dau_yeu.jpg"));
+            //a.Push(new book("016", "Để gió cuốn đi", "Ái Vân", "Văn học", "Phương Đông ", 168000, "A - 02",  new DateTime(2016, 05, 21),""));
+            //a.Push(new book("017", "Cỗ máy thời gian", "H.G.WELLS", "Khoa học viễn tưởng", "Đông A ", 60000, "A-01", new DateTime(2018, 10, 10), ""));
+            //a.Push(new book("018", "Cỗ máy thời gian", "H.G.WELLS", "Khoa học viễn tưởng", "Đông A ", 60000, "A-03", new DateTime(2018, 10, 10), ""));
+            //a.Push(new book("019", "Tam thể", "Lưu Từ Hân", "Khoa học viễn tưởng", "Trùng Khánh", 135000, "A-05", new DateTime(2008, 05, 01), ""));
+        }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -60,6 +70,7 @@ namespace Project_Algorithm
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            flag = true;
             FormBook b = new FormBook();
             b.ShowDialog();
         }
@@ -73,9 +84,10 @@ namespace Project_Algorithm
             tb1.Font = new Font("Arial", 20);
             panel3.Controls.Add(tb1);
         }
-
+        
         public void displayTag()
         {
+            PannelDisplayForm1.Controls.Clear();
             Panel oldPannel = new Panel() {Width = 0, Height = 0, Location = new Point(0, 0)};
             Node t = Form1.a.getRoot();
             while (t != null)
@@ -93,30 +105,68 @@ namespace Project_Algorithm
                 pic.Location = new Point(0, 0);
                 pic.Width = 300;
                 pic.Height = 400;
-                pic.ImageLocation = i.imgSrc;
+                pic.ImageLocation = i.ImgSrc;
                 pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
                 pic.Padding = new Padding(10);
 
                 Label lbTG = new Label()
                 {
-                    Width = 400, 
+                    Width = 300,
+                    Height = 50,
                     TextAlign = ContentAlignment.MiddleCenter,
                     Margin = new Padding(100,0,0,0)
                 };
-                lbTG.Text = ("Mã sách: " + i.maSach + " Tác giả: " + i.tenSach).ToString();
+                lbTG.Text = ("Mã sách: " + i.MaSach + "--" + i.TenSach).ToString();
                 lbTG.Font = new Font("Arial", 10, FontStyle.Bold);
                 lbTG.Location = new Point(10, pic.Height + 10);
-                lbTG.AutoSize = true;
+                //lbTG.AutoSize = true;
                 lbTG.Padding = new Padding(20,0,0,0);
 
+                // add pannel con vào pannel cha
                 curPan.BorderStyle = BorderStyle.FixedSingle;
                 curPan.Controls.Add(pic);
                 curPan.Controls.Add(lbTG);
                 PannelDisplayForm1.Controls.Add(curPan);
 
+                // add event cho từng thuộc tính pannel con
+                curPan.Click += showForm;
+                pic.Click += showForm;
+                lbTG.Click += showForm;
                 oldPannel = curPan;
                 t = t.Next;
             }
+        }
+
+        public void showForm(object sender, EventArgs e)
+        {
+            flag = false;
+            Panel p;
+            if (sender.GetType() == typeof(Panel))
+            {
+                p = sender as Panel;
+            }
+            else if (sender.GetType() == typeof(PictureBox))
+            {
+                p = (sender as PictureBox).Parent as Panel;
+            }
+            else
+            {
+                p = (sender as Label).Parent as Panel;
+            }
+
+            slide = 0;
+            foreach (Panel i in PannelDisplayForm1.Controls){
+                if (i == p)
+                    break;
+                slide++;
+            }
+            FormBook b = new FormBook();
+            b.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            displayTag();
         }
     }
 }

@@ -57,7 +57,7 @@
             // 
             // PannelDisplayForm1
             // 
-            this.PannelDisplayForm1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PannelDisplayForm1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.PannelDisplayForm1.AutoScroll = true;
             this.PannelDisplayForm1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PannelDisplayForm1.Font = new System.Drawing.Font("Arial", 8.25F);
@@ -185,6 +185,7 @@
             this.button2.TabIndex = 10;
             this.button2.Text = "LỌC LẠI DANH SÁCH";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label4
             // 

@@ -54,11 +54,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1237, 656);
+            this.ClientSize = new System.Drawing.Size(1251, 656);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Name = "FormDisplay";
             this.Text = "FormDisplay";
+            this.Load += new System.EventHandler(this.FormDisplay_Load);
             this.ResumeLayout(false);
 
         }

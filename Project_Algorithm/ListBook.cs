@@ -6,27 +6,10 @@ using System.Threading.Tasks;
 
 namespace Project_Algorithm
 {
-    public struct book
-    {
-        public string maSach; //MS01
-        public string tenSach; //
-        public string TacGia; // nguyen quoc trung
-        public string ChuDe; //
-        public string NXB; // 
-        public int price;
-        public string vt; // vitri // A-1 split('-') tryParse
-        public DateTime NgXB;
-        public string imgSrc;
-    }
+
     public class ListBook
     {
-
         protected Node root = new Node();
-
-        public Node getRoot()
-        {
-            return this.root;
-        }
         public ListBook()
         {
             this.root = null;
@@ -36,7 +19,10 @@ namespace Project_Algorithm
             this.root.Data = t;
             this.root.Next = null;
         }
-
+        public Node getRoot()
+        {
+            return this.root;
+        }
         public void Push(book t) // them vao cuoi
         {
             Node tmp = new Node();
@@ -54,7 +40,6 @@ namespace Project_Algorithm
                 q.Next = tmp;
             }
         }
-
         public void PushBack(book t)
         {
             if (this.root != null)
@@ -67,7 +52,6 @@ namespace Project_Algorithm
                 this.root = tmp;
             }
         }
-
         public int Len()
         {
             int l = 0;
@@ -80,7 +64,6 @@ namespace Project_Algorithm
 
             return l;
         }
-
         public void Add(book t, int index)
         {
             int n = Len();
@@ -104,7 +87,6 @@ namespace Project_Algorithm
                 p.Next = tmp;
             }
         }
-
         public void Remove(int index)
         {
             int n = Len();
@@ -132,7 +114,6 @@ namespace Project_Algorithm
                 p = null;
             }
         }
-
         public book GetBook(int index)
         {
             Node q = this.root;
@@ -146,7 +127,6 @@ namespace Project_Algorithm
             b = q.Data;
             return b;
         }
-
         public void Display()
         {
             Node p = this.root;
@@ -154,14 +134,14 @@ namespace Project_Algorithm
             while (p != null)
             {
                 Console.WriteLine("Quyển sách thứ {0}", i++);
-                Console.WriteLine("Mã sách: {0}", p.Data.maSach);
-                Console.WriteLine("Tên sách: {0}", p.Data.tenSach);
+                Console.WriteLine("Mã sách: {0}", p.Data.MaSach);
+                Console.WriteLine("Tên sách: {0}", p.Data.TenSach);
                 Console.WriteLine("Tác giả: {0}", p.Data.TacGia);
                 Console.WriteLine("Chủ đề {0}", p.Data.ChuDe);
                 Console.WriteLine("Nhà xuất bản: {0}", p.Data.NXB);
-                Console.WriteLine("Giá bán: {0}", p.Data.price);
-                Console.WriteLine("Vị trí: {0}", p.Data.vt);
-                Console.WriteLine("Ngày xuất bản: " + p.Data.NgXB.Day +"/" + p.Data.NgXB.Month + "/" 
+                Console.WriteLine("Giá bán: {0}", p.Data.Price);
+                Console.WriteLine("Vị trí: {0}", p.Data.VT);
+                Console.WriteLine("Ngày xuất bản: " + p.Data.NgXB.Day + "/" + p.Data.NgXB.Month + "/"
                     + p.Data.NgXB.Year);
                 p = p.Next;
             }
