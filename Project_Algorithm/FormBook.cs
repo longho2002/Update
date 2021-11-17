@@ -19,7 +19,7 @@ namespace Project_Algorithm
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //trich xuat anh
         {
             try
             {
@@ -54,8 +54,7 @@ namespace Project_Algorithm
                 this.Close();
                 return;
             }
-
-            Form1.books.Add(temp);
+            Form1.a.Push(temp);
             this.Close();
         }
     }

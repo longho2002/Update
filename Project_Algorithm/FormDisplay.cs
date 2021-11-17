@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+using ContentAlignment = System.Drawing.ContentAlignment;
 
 namespace Project_Algorithm
 {
@@ -22,11 +24,11 @@ namespace Project_Algorithm
 
         void createTag()
         {
-            int n = Form1.books.Count();
             Panel oldPannel = new Panel(){Width = 0,Height = 0, Location = new Point(0,0)};
-
-            foreach (book i in Form1.books)
+            Node t = Form1.a.getRoot();
+            while(t != null)
             {
+                book i = t.Data;
                 Panel curPan = new Panel()
                 {
                     Width = 200,
@@ -57,6 +59,7 @@ namespace Project_Algorithm
 
                 panel1.Controls.Add(curPan);
                 oldPannel = curPan;
+                t = t.Next;
             }
 
         }
