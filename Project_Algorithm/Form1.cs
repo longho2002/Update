@@ -107,9 +107,9 @@ namespace Project_Algorithm
                 lbTG.Font = new Font("Arial", 10, FontStyle.Bold);
                 lbTG.Location = new Point(10, pic.Height + 10);
                 lbTG.AutoSize = true;
+                lbTG.Padding = new Padding(20,0,0,0);
 
                 curPan.BorderStyle = BorderStyle.FixedSingle;
-                curPan.Margin = new Padding(100, 0, 0,5);
                 curPan.Controls.Add(pic);
                 curPan.Controls.Add(lbTG);
                 PannelDisplayForm1.Controls.Add(curPan);
