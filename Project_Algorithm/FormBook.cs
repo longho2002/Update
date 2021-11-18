@@ -129,7 +129,6 @@ namespace Project_Algorithm
                 PanBtn.Controls.Add(Delete);
                 UpdateUI();
             }
-
         }
 
         protected void UpdateUI()

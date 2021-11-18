@@ -129,8 +129,13 @@ namespace Project_Algorithm
                     displayTag(a.findLocation(s));
                     break;
                 case 7:
-                    displayTag(a.findDate(s));
+                {
+                    if (s != "")
+                        displayTag(a.findDate(s));
+                    else
+                        displayTag(a);
                     break;
+                }
             }
 
         }
