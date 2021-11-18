@@ -112,6 +112,16 @@ namespace Project_Algorithm
                 p = null;
             }
         }
+
+        public void RemoveAll()
+        {
+            while (this.root != null)
+            {
+                Node p = this.root;
+                this.root = this.root.Next;
+                p = null;
+            }
+        }
         public book GetBook(int index)
         {
             Node q = this.root;
@@ -144,6 +154,186 @@ namespace Project_Algorithm
                 p = p.Next;
             }
         }
+        public void SortMaSach(int x)
+        {
+            // for loop thứ nhất
+            for (Node pTmp = this.root; pTmp != null; pTmp = pTmp.Next)
+            {
+                //for loop thứ hai
+                for (Node pTmp2 = pTmp.Next; pTmp2 != null; pTmp2 = pTmp2.Next)
+                {
+                    if (x == 0) // sap xep tang dan
+                    {
+                        if (String.Compare(pTmp.Data.MaSach, pTmp2.Data.MaSach, true) > 0)
+                        {
+                            book tmp = pTmp.Data;
+                            pTmp.Data = pTmp2.Data;
+                            pTmp2.Data = tmp;
+                        }
+                    }
+                    else if (x == 1) // sap xep giam dan
+                        if (String.Compare(pTmp.Data.MaSach, pTmp2.Data.MaSach, true) < 0)
+                        {
+                            book tmp = pTmp.Data;
+                            pTmp.Data = pTmp2.Data;
+                            pTmp2.Data = tmp;
+                        }
 
+                }
+            }
+        }
+        public void SortTenSach(int x)
+        {
+            // for loop thứ nhất
+            for (Node pTmp = this.root; pTmp != null; pTmp = pTmp.Next)
+            {
+                //for loop thứ hai
+                for (Node pTmp2 = pTmp.Next; pTmp2 != null; pTmp2 = pTmp2.Next)
+                {
+                    if (x == 0) // sap xep tang dan
+                    {
+                        if (String.Compare(pTmp.Data.TenSach, pTmp2.Data.TenSach, true) > 0)
+                        {
+                            book tmp = pTmp.Data;
+                            pTmp.Data = pTmp2.Data;
+                            pTmp2.Data = tmp;
+                        }
+                    }
+                    else if (x == 1) // sap xep giam dan
+                        if (String.Compare(pTmp.Data.TenSach, pTmp2.Data.TenSach, true) < 0)
+                        {
+                            book tmp = pTmp.Data;
+                            pTmp.Data = pTmp2.Data;
+                            pTmp2.Data = tmp;
+                        }
+
+                }
+            }
+        }
+
+        public ListBook findTenSach(string s)
+        {
+            string s1;
+            string s2;
+            Node p = this.root;
+            ListBook temp = new ListBook();
+            while (p != null)
+            {
+                s1 = p.Data.TenSach.ToUpper();
+                s2 = s.ToUpper();
+                if (s1.Contains(s2))
+                    temp.Push(p.Data);
+                p = p.Next;
+            }
+            return temp;
+        }
+        public ListBook findTacGia(string s)
+        {
+            string s1;
+            string s2;
+            Node p = this.root;
+            ListBook temp = new ListBook();
+            while (p != null)
+            {
+                s1 = p.Data.TacGia.ToUpper();
+                s2 = s.ToUpper();
+                if (s1.Contains(s2))
+                    temp.Push(p.Data);
+                p = p.Next;
+            }
+            return temp;
+        }
+        public ListBook findMaSach(string s)
+        {
+            string s1;
+            string s2;
+            Node p = this.root;
+            ListBook temp = new ListBook();
+            while (p != null)
+            {
+                s1 = p.Data.MaSach.ToUpper();
+                s2 = s.ToUpper();
+                if (s1.Contains(s2))
+                    temp.Push(p.Data);
+                p = p.Next;
+            }
+            return temp;
+        }
+        public ListBook findNXB(string s)
+        {
+            string s1;
+            string s2;
+            Node p = this.root;
+            ListBook temp = new ListBook();
+            while (p != null)
+            {
+                s1 = p.Data.NXB.ToUpper();
+                s2 = s.ToUpper();
+                if (s1.Contains(s2))
+                    temp.Push(p.Data);
+                p = p.Next;
+            }
+            return temp;
+        }
+        public ListBook findPrice(string s)
+        {
+            string s1;
+            string s2;
+            Node p = this.root;
+            ListBook temp = new ListBook();
+            while (p != null)
+            {
+                if (p.Data.Price.ToString().Contains(s))
+                    temp.Push(p.Data);
+                p = p.Next;
+            }
+            return temp;
+        }
+        public ListBook findCat(string s)
+        {
+            string s1;
+            string s2;
+            Node p = this.root;
+            ListBook temp = new ListBook();
+            while (p != null)
+            {
+                s1 = p.Data.ChuDe.ToUpper();
+                s2 = s.ToUpper();
+                if (s1.Contains(s2))
+                    temp.Push(p.Data);
+                p = p.Next;
+            }
+            return temp;
+        }
+        public ListBook findLocation(string s)
+        {
+            string s1;
+            string s2;
+            Node p = this.root;
+            ListBook temp = new ListBook();
+            while (p != null)
+            {
+                s1 = p.Data.VT.ToUpper();
+                s2 = s.ToUpper();
+                if (s1.Contains(s2))
+                    temp.Push(p.Data);
+                p = p.Next;
+            }
+            return temp;
+        }
+        public ListBook findDate(string s)
+        {
+            Node p = this.root;
+            string year;
+            ListBook temp = new ListBook();
+            while (p != null)
+            {
+                year = p.Data.NgXB.Year.ToString();
+                if (s.Contains(year))
+                    temp.Push(p.Data);
+                p = p.Next;
+            }
+            return temp;
+        }
     }
 }

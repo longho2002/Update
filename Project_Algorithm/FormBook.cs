@@ -14,8 +14,10 @@ namespace Project_Algorithm
     public partial class FormBook : Form
     {
         protected string imageLocation = "";
-        protected Node p;
+        public static Node curNode;
         protected bool changeImg = false;
+        protected int curNum = 0;
+        public static int choose = 0;
         public FormBook()
         {
             InitializeComponent();
@@ -76,25 +78,26 @@ namespace Project_Algorithm
 
         private void btnAdjust_Click(object sender, EventArgs e)
         {
-            p.Data.MaSach = textBox1.Text;
-            p.Data.TenSach = textBox2.Text;
-            p.Data.TacGia = textBox3.Text;
-            p.Data.ChuDe = textBox4.Text;
-            p.Data.NXB = textBox5.Text;
-            p.Data.VT = textBox7.Text;
+            curNode.Data.MaSach = textBox1.Text;
+            curNode.Data.TenSach = textBox2.Text;
+            curNode.Data.TacGia = textBox3.Text;
+            curNode.Data.ChuDe = textBox4.Text;
+            curNode.Data.NXB = textBox5.Text;
+            curNode.Data.VT = textBox7.Text;
             int a;
             if (int.TryParse(textBox6.Text, out a))
             {
-                p.Data.Price = a;
+                curNode.Data.Price = a;
             }
-            p.Data.NgXB = dateTimePicker1.Value;
-            if (changeImg) p.Data.ImgSrc = imageLocation;
+            curNode.Data.NgXB = dateTimePicker1.Value;
+            if (changeImg) curNode.Data.ImgSrc = imageLocation;
             this.Close();
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-           Form1.a.Remove(Form1.slide);
-           this.Close();
+            choose = 0;
+            Form1.a.Remove(curNum);
+            this.Close();
         }
         protected void showForm()
         {
@@ -131,20 +134,20 @@ namespace Project_Algorithm
 
         protected void UpdateUI()
         {
-            p = Form1.a.getRoot();
-            for (int i = 0; i < Form1.slide; i++)
+            curNode = Form1.a.getRoot();
+            while (Form1.slide != curNode.Data.MaSach)
             {
-                p = p.Next;
+                curNode = curNode.Next;
             }
-            textBox1.Text = p.Data.MaSach;
-            textBox2.Text = p.Data.TenSach;
-            textBox3.Text = p.Data.TacGia;
-            textBox4.Text = p.Data.ChuDe;
-            textBox5.Text = p.Data.NXB;
-            textBox7.Text = p.Data.VT;
-            textBox6.Text = p.Data.Price.ToString();
-            dateTimePicker1.Value = p.Data.NgXB;
-            img.Image = new Bitmap(p.Data.ImgSrc);
+            textBox1.Text = curNode.Data.MaSach;
+            textBox2.Text = curNode.Data.TenSach;
+            textBox3.Text = curNode.Data.TacGia;
+            textBox4.Text = curNode.Data.ChuDe;
+            textBox5.Text = curNode.Data.NXB;
+            textBox7.Text = curNode.Data.VT;
+            textBox6.Text = curNode.Data.Price.ToString();
+            dateTimePicker1.Value = curNode.Data.NgXB;
+            img.Image = new Bitmap(curNode.Data.ImgSrc);
         }
     }
 }

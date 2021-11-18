@@ -16,13 +16,14 @@ namespace Project_Algorithm
     {
         public static ListBook a = new ListBook();
         public static bool flag = true;
-        public static int slide; 
+        public static string slide;
         public TextBox tb1 = new TextBox();
+        public int chooseFind = -1;
         public Form1()
         {
             InitializeComponent();
             pushData();
-            displayTag();
+            displayTag(a);
         }
 
         private void pushData()
@@ -33,8 +34,8 @@ namespace Project_Algorithm
             a.Push(new book("004", "Đắc Nhân Tâm", "Dale Carnegie", "Triết học", "Tổng Hợp", 70000, "A-01", new DateTime(2008, 9, 12), Application.StartupPath + "\\Resources\\" + "dac nhan tam.jpg"));
             a.Push(new book("005", "300 Bài code thiếu nhi", "Nhiều tác giả", "Lập trình", "Tổng hợp", 100000, "A-02", new DateTime(2018, 5, 27), Application.StartupPath + "\\Resources\\" + "code thieu nhi.jpg"));
             a.Push(new book("006", "Tuổi trẻ đáng giá bao nhiêu", "Quốc Trung", "Văn học", "Hội nhà văn", 700000, "A-04", new DateTime(2019, 1, 15), Application.StartupPath + "\\Resources\\" + "tuoi tre dang gia bao nhieu.jpg"));
-            a.Push(new book("007", "Cho tôi xin một vé đi tuổi thơ", "Nguyễn Nhật Ánh", "Văn học", "Kim Đồng", 108000, "A - 06",  new DateTime(2019, 05, 06), Application.StartupPath + "\\Resources\\" + "cho toi xin 1 ve di tuoi tho.jpg"));
-            a.Push(new book("008", "Đời thay đổi khi chúng ta thay đổi", " Andrew Matthews", "Văn học", "Trẻ", 50000, "A - 04",  new DateTime(2019, 04, 28), Application.StartupPath + "\\Resources\\" + "doi thay doi khi chung ta thay doi.jpg"));
+            a.Push(new book("007", "Cho tôi xin một vé đi tuổi thơ", "Nguyễn Nhật Ánh", "Văn học", "Kim Đồng", 108000, "A - 06", new DateTime(2019, 05, 06), Application.StartupPath + "\\Resources\\" + "cho toi xin 1 ve di tuoi tho.jpg"));
+            a.Push(new book("008", "Đời thay đổi khi chúng ta thay đổi", " Andrew Matthews", "Văn học", "Trẻ", 50000, "A - 04", new DateTime(2019, 04, 28), Application.StartupPath + "\\Resources\\" + "doi thay doi khi chung ta thay doi.jpg"));
             a.Push(new book("009", "Cô gái đến từ hôm qua", "Nguyễn Nhật Ánh", "Văn học", "Trẻ ", 68000, "A-04", new DateTime(2017, 06, 10), Application.StartupPath + "\\Resources\\" + "cô gái đén từ hôm qua.jpg"));
             a.Push(new book("010", "Khi hơi thở hóa thinh không", "Pual Kalathini", "Hồi kí", "Omega plus", 872000, "A-01", new DateTime(2016, 1, 12), Application.StartupPath + "\\Resources\\" + "KHI HƠI THỞ HÓA THINH KHÔNG.jpg"));
             a.Push(new book("011", "Đi tìm lẽ sống", "Viktor Frankl", "Tâm lý học", "Tổng Hợp ", 70200, "A-01", new DateTime(2016, 07, 01), Application.StartupPath + "\\Resources\\" + "di-tim-le-song.jpg"));
@@ -49,7 +50,17 @@ namespace Project_Algorithm
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedIndex != null)
+            {
+                int res;
+                int.TryParse(cb.SelectedIndex.ToString(), out res);
+                if (res == 0)
+                    a.SortMaSach(0);
+                else if (res == 1)
+                    a.SortTenSach(0);
+                displayTag(a);
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -73,24 +84,64 @@ namespace Project_Algorithm
             flag = true;
             FormBook b = new FormBook();
             b.ShowDialog();
-            displayTag();
+            displayTag(a);
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             tb1.Text = "";
             tb1.Location = new Point(CB_timkiem.Location.X + 20 + CB_timkiem.Width, CB_timkiem.Location.Y);
-            tb1.Width = 300;
+            tb1.Width = 450;
             tb1.Height = 39;
             tb1.Font = new Font("Arial", 20);
+            tb1.TextChanged += textFindChange;
             panel3.Controls.Add(tb1);
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedIndex != null)
+            {
+                int.TryParse(cb.SelectedIndex.ToString(), out chooseFind);
+            }
         }
-        
-        public void displayTag()
+        private void textFindChange(object sender, EventArgs e)
         {
+            string s = (sender as TextBox).Text;
+            switch (chooseFind)
+            {
+                case 0:
+                    displayTag(a.findMaSach(s));
+                    break;
+                case 1:
+                    displayTag(a.findTenSach(s));
+                    break;
+                case 2:
+                    displayTag(a.findTacGia(s));
+                    break;
+                case 3:
+                    displayTag(a.findNXB(s));
+                    break;
+                case 4:
+                    displayTag(a.findPrice(s));
+                    break;
+                case 5:
+                    displayTag(a.findCat(s));
+                    break;
+                case 6:
+                    displayTag(a.findLocation(s));
+                    break;
+                case 7:
+                    displayTag(a.findDate(s));
+                    break;
+            }
+
+        }
+
+        public void displayTag(ListBook b)
+        {
+            if (b == null)
+                return;
             PannelDisplayForm1.Controls.Clear();
-            Panel oldPannel = new Panel() {Width = 0, Height = 0, Location = new Point(0, 0)};
-            Node t = Form1.a.getRoot();
+            Panel oldPannel = new Panel() { Width = 0, Height = 0, Location = new Point(0, 0) };
+            Node t = b.getRoot();
             while (t != null)
             {
                 book i = t.Data;
@@ -115,19 +166,26 @@ namespace Project_Algorithm
                     Width = 300,
                     Height = 50,
                     TextAlign = ContentAlignment.MiddleCenter,
-                    Margin = new Padding(100,0,0,0)
+                    Margin = new Padding(100, 0, 0, 0)
                 };
                 lbTG.Text = ("Mã sách: " + i.MaSach + "--" + i.TenSach).ToString();
                 lbTG.Font = new Font("Arial", 10, FontStyle.Bold);
                 lbTG.Location = new Point(10, pic.Height + 10);
                 //lbTG.AutoSize = true;
-                lbTG.Padding = new Padding(20,0,0,0);
+                lbTG.Padding = new Padding(20, 0, 0, 0);
+
+                Label id = new Label();
+                id.Text = i.MaSach;
+                id.Hide();
 
                 // add pannel con vào pannel cha
                 curPan.BorderStyle = BorderStyle.FixedSingle;
+                curPan.Controls.Add(id);
                 curPan.Controls.Add(pic);
                 curPan.Controls.Add(lbTG);
                 PannelDisplayForm1.Controls.Add(curPan);
+
+
 
                 // add event cho từng thuộc tính pannel con
                 curPan.Click += showForm;
@@ -157,21 +215,33 @@ namespace Project_Algorithm
                 p = (sender as Label).Parent as Panel;
             }
 
-            slide = 0;
-            foreach (Panel i in PannelDisplayForm1.Controls){
+            slide = "";
+            foreach (Panel i in PannelDisplayForm1.Controls)
+            {
                 if (i == p)
+                {
+                    slide = i.Controls[0].Text;
                     break;
-                slide++;
+                }
             }
+            
+            FormBook.choose = 1;
             FormBook b = new FormBook();
             b.ShowDialog();
-            displayTag();
+            if (FormBook.choose == 0)
+            {
+                PannelDisplayForm1.Controls.Remove(p);
+            }
+            else if (FormBook.choose == 1)
+            {
+                p.Controls[1].Text = ("Mã sách: " + FormBook.curNode.Data.MaSach + "--" + FormBook.curNode.Data.TenSach).ToString();
+            }
             PannelDisplayForm1.HorizontalScroll.Value = x;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            displayTag();
+            displayTag(a);
         }
     }
 }

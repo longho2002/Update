@@ -142,7 +142,7 @@
             "Giá",
             "Chủ đề",
             "Vị trí",
-            "Ngày xuất bản"});
+            "Năm xuất bản"});
             this.CB_timkiem.Location = new System.Drawing.Point(172, 230);
             this.CB_timkiem.Name = "CB_timkiem";
             this.CB_timkiem.Size = new System.Drawing.Size(210, 39);
