@@ -248,7 +248,7 @@ namespace Project_Algorithm
             string s1;
             string s2;
             Node p = this.root;
-            ListBook temp = new ListBook();
+            ListBook temp = new ListBook(){};
             while (p != null)
             {
                 s1 = p.Data.MaSach.ToUpper();

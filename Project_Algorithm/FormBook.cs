@@ -47,28 +47,38 @@ namespace Project_Algorithm
 
         private void btnADD_Click(object sender, EventArgs e)
         {
-            book temp = new book();
-            temp.MaSach = textBox1.Text;
-            temp.TenSach = textBox2.Text;
-            temp.TacGia = textBox3.Text;
-            temp.ChuDe = textBox4.Text;
-            temp.ChuDe = textBox7.Text;
-            temp.NXB = textBox5.Text;
-            int a = 0;
-            if (int.TryParse(textBox6.Text, out a))
+            if (Form1.a.findMaSach(textBox1.Text) != null)
             {
-                temp.Price = a;
-            };
-            temp.ImgSrc = imageLocation == "" ? (Application.StartupPath + "\\Resources\\" + "noneimg.png") : imageLocation;
-            temp.NgXB = dateTimePicker1.Value;
-            if (textBox1.Text == "" && textBox2.Text == "" && textBox3.Text == "" && textBox4.Text == "" &&
-                textBox5.Text == "" && textBox6.Text == "")
-            {
-                this.Close();
-                return;
+                MessageBox.Show("Trùng Mã Sách", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            Form1.a.Push(temp);
-            this.Close();
+            else
+            {
+                book temp = new book();
+                temp.MaSach = textBox1.Text;
+                temp.TenSach = textBox2.Text;
+                temp.TacGia = textBox3.Text;
+                temp.ChuDe = textBox4.Text;
+                temp.ChuDe = textBox7.Text;
+                temp.NXB = textBox5.Text;
+                int a = 0;
+                if (int.TryParse(textBox6.Text, out a))
+                {
+                    temp.Price = a;
+                }
+                temp.ImgSrc = imageLocation == ""
+                    ? (Application.StartupPath + "\\Resources\\" + "noneimg.png")
+                    : imageLocation;
+                temp.NgXB = dateTimePicker1.Value;
+                if (textBox1.Text == "" && textBox2.Text == "" && textBox3.Text == "" && textBox4.Text == "" &&
+                    textBox5.Text == "" && textBox6.Text == "")
+                {
+                    this.Close();
+                    return;
+                }
+
+                Form1.a.Push(temp);
+                this.Close();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -78,23 +88,31 @@ namespace Project_Algorithm
 
         private void btnAdjust_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "" && textBox2.Text != "")
+            if (Form1.a.findMaSach(textBox1.Text) != null)
             {
-                curNode.Data.MaSach = textBox1.Text;
-                curNode.Data.TenSach = textBox2.Text;
-                curNode.Data.TacGia = textBox3.Text;
-                curNode.Data.ChuDe = textBox4.Text;
-                curNode.Data.NXB = textBox5.Text;
-                curNode.Data.VT = textBox7.Text;
-                int a;
-                if (int.TryParse(textBox6.Text, out a))
-                {
-                    curNode.Data.Price = a;
-                }
-                curNode.Data.NgXB = dateTimePicker1.Value;
-                if (changeImg) curNode.Data.ImgSrc = imageLocation;
+                MessageBox.Show("Trùng Mã Sách", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            this.Close();
+            else
+            {
+                if (textBox1.Text != "" && textBox2.Text != "")
+                {
+                    curNode.Data.MaSach = textBox1.Text;
+                    curNode.Data.TenSach = textBox2.Text;
+                    curNode.Data.TacGia = textBox3.Text;
+                    curNode.Data.ChuDe = textBox4.Text;
+                    curNode.Data.NXB = textBox5.Text;
+                    curNode.Data.VT = textBox7.Text;
+                    int a;
+                    if (int.TryParse(textBox6.Text, out a))
+                    {
+                        curNode.Data.Price = a;
+                    }
+
+                    curNode.Data.NgXB = dateTimePicker1.Value;
+                    if (changeImg) curNode.Data.ImgSrc = imageLocation;
+                }
+                this.Close();
+            }
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {

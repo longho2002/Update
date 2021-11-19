@@ -8,10 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+using ContentAlignment = System.Drawing.ContentAlignment;
 
 namespace Project_Algorithm
 {
-    
+
     public partial class Form1 : Form
     {
         public static ListBook a = new ListBook();
@@ -19,10 +21,13 @@ namespace Project_Algorithm
         public static string slide;
         public TextBox tb1 = new TextBox();
         public int chooseFind = -1;
+        protected bool changeDisplay = true;
         public Form1()
         {
             InitializeComponent();
             pushData();
+            listShow.Hide();
+            showList(a);
             displayTag(a);
         }
 
@@ -63,7 +68,6 @@ namespace Project_Algorithm
             }
         }
 
-
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             FormDisplay b = new FormDisplay();
@@ -75,7 +79,10 @@ namespace Project_Algorithm
             flag = true;
             FormBook b = new FormBook();
             b.ShowDialog();
-            displayTag(a);
+            if (changeDisplay)
+                displayTag(a);
+            else
+                showList(a);
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,17 +127,16 @@ namespace Project_Algorithm
                     displayTag(a.findLocation(s));
                     break;
                 case 7:
-                {
-                    if (s != "")
-                        displayTag(a.findDate(s));
-                    else
-                        displayTag(a);
-                    break;
-                }
+                    {
+                        if (s != "")
+                            displayTag(a.findDate(s));
+                        else
+                            displayTag(a);
+                        break;
+                    }
             }
 
         }
-
         public void displayTag(ListBook b)
         {
             if (b == null)
@@ -190,7 +196,42 @@ namespace Project_Algorithm
                 t = t.Next;
             }
         }
+        private void showList(ListBook b)
+        {
+            listShow.Controls.Clear();
+            listShow.Columns.Clear();
+            listShow.Items.Clear();
+            listShow.View = View.Details;
+            listShow.Font = new Font("Arial", 15);
 
+            listShow.Columns.Add("Mã sách").Width = 150;
+            listShow.Columns.Add("Tên sách").Width = 400;
+            listShow.Columns.Add("Tác giả").Width = 243;
+            listShow.Columns.Add("Chủ đề").Width = 200;
+            listShow.Columns.Add("NXB").Width = 200;
+            listShow.Columns.Add("Vị trí").Width = 90;
+            listShow.Columns.Add("Ngày phát hành").Width = 200;
+            listShow.Columns.Add("Giá").Width = 200;
+            listShow.Columns[0].TextAlign = HorizontalAlignment.Center;
+            listShow.Columns[6].TextAlign = HorizontalAlignment.Center;
+            listShow.Columns[7].TextAlign = HorizontalAlignment.Center;
+            Node t = b.getRoot();
+
+            while (t != null)
+            {
+                ListViewItem item = new ListViewItem();
+                listShow.Items.Add(item);
+                item.Text = t.Data.MaSach.ToString();
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = t.Data.TenSach.ToString() });
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = t.Data.TacGia.ToString() });
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = t.Data.ChuDe.ToString() });
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = t.Data.NXB.ToString() });
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = t.Data.VT });
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = (t.Data.NgXB.ToShortDateString()) });
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = t.Data.Price.ToString() + " VND" });
+                t = t.Next;
+            }
+        }
         public void showForm(object sender, EventArgs e)
         {
             // luu tru dia chi hien tai
@@ -233,10 +274,27 @@ namespace Project_Algorithm
             // gán lại tọa độ thanh scroll bar
             PannelDisplayForm1.HorizontalScroll.Value = x;
         }
-
         private void btnReset_Click(object sender, EventArgs e)
         {
-            displayTag(a);
+            if (changeDisplay)
+                displayTag(a);
+            else
+                showList(a);
+        }
+        private void CheckBoxChange_CheckedChanged(object sender, EventArgs e)
+        {
+            changeDisplay = !changeDisplay;
+            if (!changeDisplay)
+            {
+                PannelDisplayForm1.Controls.Clear();
+                PannelDisplayForm1.Controls.Add(listShow);
+                listShow.Show();
+            }
+            else
+            {
+                displayTag(a);
+                listShow.Hide();
+            }
         }
     }
 }

@@ -311,6 +311,9 @@
         7XBX5RreLnkp9JSbyOX+C3pxdzJ3I9eAAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="CheckBoxChange.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="pictureBox4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAG4FJREFUeF7t
@@ -2136,4 +2139,7 @@
         b8vktePkpZM75K//8dfuqxS1i9dE/n/o/K0hGVnY0wAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="CheckBoxChange.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

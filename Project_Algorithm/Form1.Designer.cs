@@ -47,6 +47,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbSort = new System.Windows.Forms.ComboBox();
+            this.CheckBoxChange = new System.Windows.Forms.CheckBox();
+            this.listShow = new System.Windows.Forms.ListView();
+            this.PannelDisplayForm1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -60,6 +63,7 @@
             this.PannelDisplayForm1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.PannelDisplayForm1.AutoScroll = true;
             this.PannelDisplayForm1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PannelDisplayForm1.Controls.Add(this.listShow);
             this.PannelDisplayForm1.Font = new System.Drawing.Font("Arial", 8.25F);
             this.PannelDisplayForm1.Location = new System.Drawing.Point(12, 403);
             this.PannelDisplayForm1.Name = "PannelDisplayForm1";
@@ -80,10 +84,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 20F);
+            this.label7.Font = new System.Drawing.Font("Arial", 20F);
             this.label7.Location = new System.Drawing.Point(67, 58);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(169, 31);
+            this.label7.Size = new System.Drawing.Size(172, 32);
             this.label7.TabIndex = 13;
             this.label7.Text = "CTDL VÀ GT";
             // 
@@ -111,6 +115,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.CheckBoxChange);
             this.panel3.Controls.Add(this.CB_search);
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Controls.Add(this.pictureBox3);
@@ -272,6 +277,30 @@
             this.cbSort.TabIndex = 0;
             this.cbSort.SelectedIndexChanged += new System.EventHandler(this.cbSort_SelectedIndexChanged);
             // 
+            // CheckBoxChange
+            // 
+            this.CheckBoxChange.AutoSize = true;
+            this.CheckBoxChange.BackColor = System.Drawing.Color.Transparent;
+            this.CheckBoxChange.Font = new System.Drawing.Font("Arial", 20F);
+            this.CheckBoxChange.Location = new System.Drawing.Point(43, 283);
+            this.CheckBoxChange.Name = "CheckBoxChange";
+            this.CheckBoxChange.Size = new System.Drawing.Size(327, 36);
+            this.CheckBoxChange.TabIndex = 15;
+            this.CheckBoxChange.Text = "Hiển thị dạng danh sách";
+            this.CheckBoxChange.UseVisualStyleBackColor = false;
+            this.CheckBoxChange.CheckedChanged += new System.EventHandler(this.CheckBoxChange_CheckedChanged);
+            // 
+            // listShow
+            // 
+            this.listShow.FullRowSelect = true;
+            this.listShow.GridLines = true;
+            this.listShow.HideSelection = false;
+            this.listShow.Location = new System.Drawing.Point(34, 28);
+            this.listShow.Name = "listShow";
+            this.listShow.Size = new System.Drawing.Size(1687, 436);
+            this.listShow.TabIndex = 0;
+            this.listShow.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,6 +313,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project cuoi ky";
+            this.PannelDisplayForm1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -316,6 +346,8 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ComboBox CB_search;
+        private System.Windows.Forms.CheckBox CheckBoxChange;
+        private System.Windows.Forms.ListView listShow;
     }
 }
 
