@@ -78,19 +78,22 @@ namespace Project_Algorithm
 
         private void btnAdjust_Click(object sender, EventArgs e)
         {
-            curNode.Data.MaSach = textBox1.Text;
-            curNode.Data.TenSach = textBox2.Text;
-            curNode.Data.TacGia = textBox3.Text;
-            curNode.Data.ChuDe = textBox4.Text;
-            curNode.Data.NXB = textBox5.Text;
-            curNode.Data.VT = textBox7.Text;
-            int a;
-            if (int.TryParse(textBox6.Text, out a))
+            if (textBox1.Text != "" && textBox2.Text != "")
             {
-                curNode.Data.Price = a;
+                curNode.Data.MaSach = textBox1.Text;
+                curNode.Data.TenSach = textBox2.Text;
+                curNode.Data.TacGia = textBox3.Text;
+                curNode.Data.ChuDe = textBox4.Text;
+                curNode.Data.NXB = textBox5.Text;
+                curNode.Data.VT = textBox7.Text;
+                int a;
+                if (int.TryParse(textBox6.Text, out a))
+                {
+                    curNode.Data.Price = a;
+                }
+                curNode.Data.NgXB = dateTimePicker1.Value;
+                if (changeImg) curNode.Data.ImgSrc = imageLocation;
             }
-            curNode.Data.NgXB = dateTimePicker1.Value;
-            if (changeImg) curNode.Data.ImgSrc = imageLocation;
             this.Close();
         }
         private void btnDelete_Click(object sender, EventArgs e)
@@ -101,6 +104,7 @@ namespace Project_Algorithm
         }
         protected void showForm()
         {
+            // kiểm tra chọn sửa hay thêm sách
             if (Form1.flag == false)
             {
                 btnADD.Hide();
@@ -134,9 +138,11 @@ namespace Project_Algorithm
         protected void UpdateUI()
         {
             curNode = Form1.a.getRoot();
+            curNum = 0;
             while (Form1.slide != curNode.Data.MaSach)
             {
                 curNode = curNode.Next;
+                curNum++;
             }
             textBox1.Text = curNode.Data.MaSach;
             textBox2.Text = curNode.Data.TenSach;

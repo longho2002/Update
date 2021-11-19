@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -47,8 +49,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnCan = new System.Windows.Forms.Button();
             this.img = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.PanBtn = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img)).BeginInit();
@@ -77,6 +77,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(633, 463);
             this.panel2.TabIndex = 1;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.textBox7.Location = new System.Drawing.Point(263, 312);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(348, 30);
+            this.textBox7.TabIndex = 16;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label8.Location = new System.Drawing.Point(50, 312);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(67, 25);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "VỊ TRÍ";
             // 
             // dateTimePicker1
             // 
@@ -237,30 +255,12 @@
             // 
             // img
             // 
-            this.img.Location = new System.Drawing.Point(52, 130);
+            this.img.Location = new System.Drawing.Point(28, 67);
             this.img.Name = "img";
-            this.img.Size = new System.Drawing.Size(237, 287);
+            this.img.Size = new System.Drawing.Size(298, 334);
             this.img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img.TabIndex = 5;
             this.img.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label8.Location = new System.Drawing.Point(50, 312);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 25);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "VỊ TRÍ";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.textBox7.Location = new System.Drawing.Point(263, 312);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(348, 30);
-            this.textBox7.TabIndex = 16;
             // 
             // PanBtn
             // 
@@ -276,6 +276,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1056, 606);
             this.Controls.Add(this.PanBtn);
             this.Controls.Add(this.img);

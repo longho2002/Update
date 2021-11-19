@@ -11,3 +11,4 @@ D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.e
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.pdb
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.FormBook.resources
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.FormDisplay.resources
+D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.FormAdd.resources

@@ -24,10 +24,10 @@ namespace Project_Algorithm
 
         void createTag()
         {
-            Panel oldPannel = new Panel(){Width = 0,Height = 0, Location = new Point(0,0)};
+            Panel oldPannel = new Panel() { Width = 0, Height = 0, Location = new Point(0, 0) };
             Node t = Form1.a.getRoot();
             int num = 1;
-            while(t != null)
+            while (t != null)
             {
                 book i = t.Data;
                 Panel curPan = new Panel()
@@ -45,14 +45,14 @@ namespace Project_Algorithm
                 pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
                 pic.Padding = new Padding(10);
 
-                Label lbTG = new Label() { Width = 200, TextAlign = ContentAlignment.MiddleCenter };
+                Label lbTG = new Label() { Width = 200, Height = 30, TextAlign = ContentAlignment.MiddleCenter };
                 lbTG.Text = ("Mã sách: " + i.MaSach + " Tác giả: " + i.TacGia).ToString();
                 lbTG.Location = new Point(10, pic.Height);
 
 
                 Label lbVT = new Label() { Width = 200, TextAlign = ContentAlignment.MiddleCenter };
-                lbVT.Text = ("Vị trí: "+ i.VT).ToString();
-                lbVT.Location = new Point(lbTG.Location.X, lbTG.Location.Y + 20);
+                lbVT.Text = ("Vị trí: " + i.VT).ToString();
+                lbVT.Location = new Point(lbTG.Location.X, lbTG.Location.Y + lbTG.Height);
 
                 curPan.Controls.Add(pic);
                 curPan.Controls.Add(lbTG);
@@ -77,9 +77,6 @@ namespace Project_Algorithm
             this.Close();
         }
 
-        private void FormDisplay_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }

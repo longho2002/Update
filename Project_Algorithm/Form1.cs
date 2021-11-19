@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Project_Algorithm
 {
-
+    
     public partial class Form1 : Form
     {
         public static ListBook a = new ListBook();
@@ -48,7 +48,7 @@ namespace Project_Algorithm
             //a.Push(new book("018", "Cỗ máy thời gian", "H.G.WELLS", "Khoa học viễn tưởng", "Đông A ", 60000, "A-03", new DateTime(2018, 10, 10), ""));
             //a.Push(new book("019", "Tam thể", "Lưu Từ Hân", "Khoa học viễn tưởng", "Trùng Khánh", 135000, "A-05", new DateTime(2008, 05, 01), ""));
         }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbSort_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
             if (cb.SelectedIndex != null)
@@ -63,20 +63,11 @@ namespace Project_Algorithm
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnDisplay_Click(object sender, EventArgs e)
         {
             FormDisplay b = new FormDisplay();
             b.ShowDialog();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -90,7 +81,7 @@ namespace Project_Algorithm
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             tb1.Text = "";
-            tb1.Location = new Point(CB_timkiem.Location.X + 20 + CB_timkiem.Width, CB_timkiem.Location.Y);
+            tb1.Location = new Point(CB_search.Location.X + 20 + CB_search.Width, CB_search.Location.Y);
             tb1.Width = 450;
             tb1.Height = 39;
             tb1.Font = new Font("Arial", 20);
@@ -144,7 +135,7 @@ namespace Project_Algorithm
         {
             if (b == null)
                 return;
-            PannelDisplayForm1.Controls.Clear();
+            PannelDisplayForm1.Controls.Clear(); // xóa toàn bộ thẻ pannel
             Panel oldPannel = new Panel() { Width = 0, Height = 0, Location = new Point(0, 0) };
             Node t = b.getRoot();
             while (t != null)
@@ -179,6 +170,7 @@ namespace Project_Algorithm
                 //lbTG.AutoSize = true;
                 lbTG.Padding = new Padding(20, 0, 0, 0);
 
+                // gán id cho từng pannel
                 Label id = new Label();
                 id.Text = i.MaSach;
                 id.Hide();
@@ -189,8 +181,6 @@ namespace Project_Algorithm
                 curPan.Controls.Add(pic);
                 curPan.Controls.Add(lbTG);
                 PannelDisplayForm1.Controls.Add(curPan);
-
-
 
                 // add event cho từng thuộc tính pannel con
                 curPan.Click += showForm;
@@ -207,6 +197,7 @@ namespace Project_Algorithm
             int x = PannelDisplayForm1.HorizontalScroll.Value;
             flag = false;
             Panel p;
+            // lấy ra pannel gốc
             if (sender.GetType() == typeof(Panel))
             {
                 p = sender as Panel;
@@ -219,8 +210,7 @@ namespace Project_Algorithm
             {
                 p = (sender as Label).Parent as Panel;
             }
-
-            slide = "";
+            slide = ""; // có tác dụng lưu pannel được chọn
             foreach (Panel i in PannelDisplayForm1.Controls)
             {
                 if (i == p)
@@ -229,11 +219,10 @@ namespace Project_Algorithm
                     break;
                 }
             }
-            
-            FormBook.choose = 1;
+            FormBook.choose = 1; // đổi cách hiển thị form book
             FormBook b = new FormBook();
             b.ShowDialog();
-            if (FormBook.choose == 0)
+            if (FormBook.choose == 0) // kiểm tra lựa chọn từ  form book
             {
                 PannelDisplayForm1.Controls.Remove(p);
             }
@@ -241,10 +230,11 @@ namespace Project_Algorithm
             {
                 p.Controls[1].Text = ("Mã sách: " + FormBook.curNode.Data.MaSach + "--" + FormBook.curNode.Data.TenSach).ToString();
             }
+            // gán lại tọa độ thanh scroll bar
             PannelDisplayForm1.HorizontalScroll.Value = x;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnReset_Click(object sender, EventArgs e)
         {
             displayTag(a);
         }

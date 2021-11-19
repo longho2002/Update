@@ -35,18 +35,18 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.CB_timkiem = new System.Windows.Forms.ComboBox();
+            this.CB_search = new System.Windows.Forms.ComboBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDisplay = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbSort = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -111,30 +111,30 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.CB_timkiem);
+            this.panel3.Controls.Add(this.CB_search);
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.btnDisplay);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.cbSort);
             this.panel3.Font = new System.Drawing.Font("Arial", 8.25F);
             this.panel3.Location = new System.Drawing.Point(332, 47);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1416, 350);
             this.panel3.TabIndex = 2;
             // 
-            // CB_timkiem
+            // CB_search
             // 
-            this.CB_timkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.CB_timkiem.FormattingEnabled = true;
-            this.CB_timkiem.ItemHeight = 31;
-            this.CB_timkiem.Items.AddRange(new object[] {
+            this.CB_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.CB_search.FormattingEnabled = true;
+            this.CB_search.ItemHeight = 31;
+            this.CB_search.Items.AddRange(new object[] {
             "Mã sách",
             "Tên sách",
             "Tác giả",
@@ -143,11 +143,11 @@
             "Chủ đề",
             "Vị trí",
             "Năm xuất bản"});
-            this.CB_timkiem.Location = new System.Drawing.Point(172, 230);
-            this.CB_timkiem.Name = "CB_timkiem";
-            this.CB_timkiem.Size = new System.Drawing.Size(210, 39);
-            this.CB_timkiem.TabIndex = 14;
-            this.CB_timkiem.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.CB_search.Location = new System.Drawing.Point(172, 230);
+            this.CB_search.Name = "CB_search";
+            this.CB_search.Size = new System.Drawing.Size(210, 39);
+            this.CB_search.TabIndex = 14;
+            this.CB_search.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // pictureBox4
             // 
@@ -188,7 +188,7 @@
             this.button2.TabIndex = 10;
             this.button2.Text = "LỌC LẠI DANH SÁCH";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // label4
             // 
@@ -212,15 +212,15 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // button1
+            // btnDisplay
             // 
-            this.button1.Location = new System.Drawing.Point(1167, 284);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(147, 45);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "IN DANH SÁCH";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnDisplay.Location = new System.Drawing.Point(1167, 284);
+            this.btnDisplay.Name = "btnDisplay";
+            this.btnDisplay.Size = new System.Drawing.Size(147, 45);
+            this.btnDisplay.TabIndex = 7;
+            this.btnDisplay.Text = "IN DANH SÁCH";
+            this.btnDisplay.UseVisualStyleBackColor = true;
+            this.btnDisplay.Click += new System.EventHandler(this.btnDisplay_Click);
             // 
             // label3
             // 
@@ -252,12 +252,12 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "SẮP XẾP";
             // 
-            // comboBox1
+            // cbSort
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.ItemHeight = 31;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.cbSort.FormattingEnabled = true;
+            this.cbSort.ItemHeight = 31;
+            this.cbSort.Items.AddRange(new object[] {
             "Mã sách",
             "Tên sách",
             "Tác giả",
@@ -266,21 +266,23 @@
             "Chủ đề",
             "Vị trí",
             "Ngày xuất bản"});
-            this.comboBox1.Location = new System.Drawing.Point(172, 171);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(210, 39);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cbSort.Location = new System.Drawing.Point(172, 171);
+            this.cbSort.Name = "cbSort";
+            this.cbSort.Size = new System.Drawing.Size(210, 39);
+            this.cbSort.TabIndex = 0;
+            this.cbSort.SelectedIndexChanged += new System.EventHandler(this.cbSort_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(1784, 906);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.PannelDisplayForm1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project cuoi ky";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -299,10 +301,10 @@
         private System.Windows.Forms.Panel PannelDisplayForm1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbSort;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDisplay;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label4;
@@ -313,7 +315,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.ComboBox CB_timkiem;
+        private System.Windows.Forms.ComboBox CB_search;
     }
 }
 
