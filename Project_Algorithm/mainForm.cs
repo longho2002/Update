@@ -62,7 +62,7 @@ namespace Project_Algorithm
             switch (res)
             {
                 case 0:
-                    a.MaSach_QuickSort(Asc_Dsc);
+                    a.MaSach_Sort(Asc_Dsc);
                     break;
                 case 1:
                     a.TenSach_MergeSort(Asc_Dsc);
