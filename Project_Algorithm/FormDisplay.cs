@@ -58,26 +58,25 @@ namespace Project_Algorithm
                 curPan.Controls.Add(pic);
                 curPan.Controls.Add(lbTG);
                 curPan.Controls.Add(lbVT);
-
                 panel1.Controls.Add(curPan);
                 oldPannel = curPan;
                 t = t.Next;
-                if (num == 7)
+
+                if (num == 5)
                 {
                     num = 0;
-                    oldPannel.Location = new Point(0, oldPannel.Location.Y + 370);
+                    Panel tmp = new Panel();
+                    tmp.Location = new Point(0, curPan.Location.Y + 370);
+                    oldPannel = tmp;
                     oldPannel.Width = 0;
                     oldPannel.Height = 0;
                 }
                 num++;
             }
-
         }
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-
     }
 }

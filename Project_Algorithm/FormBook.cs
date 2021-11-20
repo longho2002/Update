@@ -135,7 +135,7 @@ namespace Project_Algorithm
                 int y = btnCan.Location.Y;
                 int tmpWidth = btnCan.Width;
                 int tmpHeight = btnCan.Height;
-                btnCan.Location = (new Point(x - tmpWidth, y));
+                btnCan.Location = new Point(x - tmpWidth, y);
                 Button Delete = new Button()
                 {
                     Width = tmpWidth,
@@ -150,8 +150,10 @@ namespace Project_Algorithm
                     Text = "UPDATE"
                 };
                 Adjust.Location = new Point(Delete.Location.X + tmpWidth + 10, Delete.Location.Y);
+
                 Adjust.Click += btnAdjust_Click;
                 Delete.Click += btnDelete_Click;
+
                 PanBtn.Controls.Add(Adjust);
                 PanBtn.Controls.Add(Delete);
                 UpdateUI();

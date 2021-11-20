@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,7 @@ namespace Project_Algorithm
     public partial class mainForm : Form
     {
         public static ListBook a = new ListBook();
+
         public static bool flag = true;
         public static string slideID;
         public TextBox tb1 = new TextBox();
@@ -42,8 +44,8 @@ namespace Project_Algorithm
             a.Push(new book("004", "Đắc Nhân Tâm", "Dale Carnegie", "Triết học", "Tổng Hợp", 70000, "A-01", new DateTime(2008, 9, 12), Application.StartupPath + "\\Resources\\" + "dac nhan tam.jpg"));
             a.Push(new book("005", "300 Bài code thiếu nhi", "Nhiều tác giả", "Lập trình", "Tổng hợp", 100000, "A-02", new DateTime(2018, 5, 27), Application.StartupPath + "\\Resources\\" + "code thieu nhi.jpg"));
             a.Push(new book("006", "Tuổi trẻ đáng giá bao nhiêu", "Quốc Trung", "Văn học", "Hội nhà văn", 700000, "A-04", new DateTime(2019, 1, 15), Application.StartupPath + "\\Resources\\" + "tuoi tre dang gia bao nhieu.jpg"));
-            a.Push(new book("007", "Cho tôi xin một vé đi tuổi thơ", "Nguyễn Nhật Ánh", "Văn học", "Kim Đồng", 108000, "A - 06", new DateTime(2019, 05, 06), Application.StartupPath + "\\Resources\\" + "cho toi xin 1 ve di tuoi tho.jpg"));
-            a.Push(new book("008", "Đời thay đổi khi chúng ta thay đổi", " Andrew Matthews", "Văn học", "Trẻ", 50000, "A - 04", new DateTime(2019, 04, 28), Application.StartupPath + "\\Resources\\" + "doi thay doi khi chung ta thay doi.jpg"));
+            a.Push(new book("007", "Cho tôi xin một vé đi tuổi thơ", "Nguyễn Nhật Ánh", "Văn học", "Kim Đồng", 108000, "A-06", new DateTime(2019, 05, 06), Application.StartupPath + "\\Resources\\" + "cho toi xin 1 ve di tuoi tho.jpg"));
+            a.Push(new book("008", "Đời thay đổi khi chúng ta thay đổi", " Andrew Matthews", "Văn học", "Trẻ", 50000, "A-04", new DateTime(2019, 04, 28), Application.StartupPath + "\\Resources\\" + "doi thay doi khi chung ta thay doi.jpg"));
             a.Push(new book("009", "Cô gái đến từ hôm qua", "Nguyễn Nhật Ánh", "Văn học", "Trẻ ", 68000, "A-04", new DateTime(2017, 06, 10), Application.StartupPath + "\\Resources\\" + "cô gái đén từ hôm qua.jpg"));
             a.Push(new book("010", "Khi hơi thở hóa thinh không", "Pual Kalathini", "Hồi kí", "Omega plus", 872000, "A-01", new DateTime(2016, 1, 12), Application.StartupPath + "\\Resources\\" + "KHI HƠI THỞ HÓA THINH KHÔNG.jpg"));
             a.Push(new book("011", "Đi tìm lẽ sống", "Viktor Frankl", "Tâm lý học", "Tổng Hợp ", 70200, "A-01", new DateTime(2016, 07, 01), Application.StartupPath + "\\Resources\\" + "di-tim-le-song.jpg"));
@@ -179,6 +181,7 @@ namespace Project_Algorithm
             if (b == null)
                 return;
             PannelDisplayForm1.Controls.Clear(); // xóa toàn bộ thẻ pannel
+
             Panel oldPannel = new Panel() { Width = 0, Height = 0, Location = new Point(0, 0) };
             Node t = b.getRoot();
             while (t != null)
@@ -190,7 +193,9 @@ namespace Project_Algorithm
                     Height = 460,
                     Location = new Point(oldPannel.Location.X + oldPannel.Width + 10, 5),
                 };
+
                 curPan.AutoSize = true;
+
                 PictureBox pic = new PictureBox();
                 pic.AutoSize = true;
                 pic.Location = new Point(0, 0);
@@ -207,6 +212,7 @@ namespace Project_Algorithm
                     TextAlign = ContentAlignment.MiddleCenter,
                     Margin = new Padding(100, 0, 0, 0)
                 };
+
                 lbTG.Text = ("Mã sách: " + i.MaSach + "--" + i.TenSach).ToString();
                 lbTG.Font = new Font("Arial", 10, FontStyle.Bold);
                 lbTG.Location = new Point(10, pic.Height + 5);
@@ -225,9 +231,11 @@ namespace Project_Algorithm
                 curPan.Controls.Add(lbTG);
                 PannelDisplayForm1.Controls.Add(curPan);
                 // add event cho từng thuộc tính pannel con
+
                 curPan.Click += showForm;
                 pic.Click += showForm;
                 lbTG.Click += showForm;
+
                 oldPannel = curPan;
                 t = t.Next;
             }
@@ -239,7 +247,7 @@ namespace Project_Algorithm
             listShow.Controls.Clear();
             listShow.Columns.Clear();
             listShow.Items.Clear();
-            listShow.MouseDoubleClick -= test;
+            listShow.MouseDoubleClick -= ClickView;
 
             listShow.View = View.Details;
             listShow.Font = new Font("Arial", 15);
@@ -252,11 +260,15 @@ namespace Project_Algorithm
             listShow.Columns.Add("Vị trí").Width = 90;
             listShow.Columns.Add("Ngày phát hành").Width = 200;
             listShow.Columns.Add("Giá").Width = 200;
+
+
             listShow.Columns[0].TextAlign = HorizontalAlignment.Center;
             listShow.Columns[6].TextAlign = HorizontalAlignment.Center;
             listShow.Columns[7].TextAlign = HorizontalAlignment.Center;
+
             Node t = b.getRoot();
-            listShow.MouseDoubleClick += test;
+
+            listShow.MouseDoubleClick += ClickView;
             while (t != null)
             {
                 ListViewItem item = new ListViewItem();
@@ -272,9 +284,8 @@ namespace Project_Algorithm
                 t = t.Next;
             }
         }
-        public void test(object sender, MouseEventArgs e)
+        public void ClickView(object sender, MouseEventArgs e)
         {
-            // luu tru dia chi hien tai
             flag = false;
             for (int i = 0; i < listShow.Items.Count; i++)
             {
@@ -287,13 +298,12 @@ namespace Project_Algorithm
             }
             FormBook.choose = 1; // đổi cách hiển thị form book
             FormBook b = new FormBook();
+
             b.ShowDialog();
             showList(a);
         }
         public void showForm(object sender, EventArgs e)
         {
-            // luu tru dia chi hien tai
-            int x = PannelDisplayForm1.HorizontalScroll.Value;
             flag = false;
             Panel p;
             // lấy ra pannel gốc
@@ -321,16 +331,15 @@ namespace Project_Algorithm
             FormBook.choose = 1; // đổi cách hiển thị form book
             FormBook b = new FormBook();
             b.ShowDialog();
+
             if (FormBook.choose == 0) // kiểm tra lựa chọn từ  form book
             {
                 PannelDisplayForm1.Controls.Remove(p);
             }
             else if (FormBook.choose == 1)
             {
-                p.Controls[1].Text = ("Mã sách: " + FormBook.curNode.Data.MaSach + "--" + FormBook.curNode.Data.TenSach).ToString();
+                p.Controls[2].Text = ("Mã sách: " + FormBook.curNode.Data.MaSach + "--" + FormBook.curNode.Data.TenSach).ToString();
             }
-            // gán lại tọa độ thanh scroll bar
-            PannelDisplayForm1.HorizontalScroll.Value = x;
         }
         private void btnReset_Click(object sender, EventArgs e)
         {

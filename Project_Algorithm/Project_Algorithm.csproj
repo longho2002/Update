@@ -66,9 +66,6 @@
       <DependentUpon>FormDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="ListBook.cs" />
-    <Compile Include="MyListView.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
