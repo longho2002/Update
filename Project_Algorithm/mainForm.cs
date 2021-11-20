@@ -23,6 +23,7 @@ namespace Project_Algorithm
         public int chooseFind = -1;
         protected bool changeDisplay = true;
         protected bool Asc_Dsc = true;
+        protected int res = -1;
         public mainForm()
         {
             InitializeComponent();
@@ -55,46 +56,55 @@ namespace Project_Algorithm
             //a.Push(new book("018", "Cỗ máy thời gian", "H.G.WELLS", "Khoa học viễn tưởng", "Đông A ", 60000, "A-03", new DateTime(2018, 10, 10), ""));
             //a.Push(new book("019", "Tam thể", "Lưu Từ Hân", "Khoa học viễn tưởng", "Trùng Khánh", 135000, "A-05", new DateTime(2008, 05, 01), ""));
         }
+
+        private void Sort()
+        {
+            switch (res)
+            {
+                case 0:
+                    a.MaSach_QuickSort(Asc_Dsc);
+                    break;
+                case 1:
+                    a.TenSach_MergeSort(Asc_Dsc);
+                    break;
+                case 2:
+                    a.TenTacGia_Sort(Asc_Dsc);
+                    break;
+                case 3:
+                    a.NXB_BubbleSort(Asc_Dsc);
+                    break;
+                case 4:
+                    a.Gia_SelectionSort(Asc_Dsc);
+                    break;
+                case 5:
+                    a.ChuDe_InsertionSort(Asc_Dsc);
+                    break;
+                case 6:
+                    a.ViTri_Sort(Asc_Dsc);
+                    break;
+                case 7:
+                    {
+                        a.NgXB_Sort(Asc_Dsc);
+                        break;
+                    }
+            }
+        }
+
+        private void CheckDisplay()
+        {
+            if (changeDisplay)
+                displayTag(a);
+            else
+                showList(a);
+        }
         private void cbSort_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
             if (cb.SelectedIndex != null)
             {
-                int res;
                 int.TryParse(cb.SelectedIndex.ToString(), out res);
-                switch (res)
-                {
-                    case 0:
-                        a.MaSach_QuickSort(Asc_Dsc);
-                        break;
-                    case 1:
-                        a.TenSach_MergeSort(Asc_Dsc);
-                        break;
-                    case 2:
-                        a.TenTacGia_Sort(Asc_Dsc);
-                        break;
-                    case 3:
-                        a.NXB_BubbleSort(Asc_Dsc);
-                        break;
-                    case 4:
-                        a.Gia_SelectionSort(Asc_Dsc);
-                        break;
-                    case 5:
-                        a.ChuDe_InsertionSort(Asc_Dsc);
-                        break;
-                    case 6:
-                        a.ViTri_Sort(Asc_Dsc);
-                        break;
-                    case 7:
-                        {
-                            a.NgXB_Sort(Asc_Dsc);
-                            break;
-                        }
-                }
-                if (changeDisplay)
-                    displayTag(a);
-                else
-                    showList(a);
+                Sort();
+                CheckDisplay();
             }
         }
 
@@ -109,10 +119,7 @@ namespace Project_Algorithm
             flag = true;
             FormBook b = new FormBook();
             b.ShowDialog();
-            if (changeDisplay)
-                displayTag(a);
-            else
-                showList(a);
+            CheckDisplay();
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -327,10 +334,7 @@ namespace Project_Algorithm
         }
         private void btnReset_Click(object sender, EventArgs e)
         {
-            if (changeDisplay)
-                displayTag(a);
-            else
-                showList(a);
+            CheckDisplay();
         }
         private void CheckBoxChange_CheckedChanged(object sender, EventArgs e)
         {
@@ -351,11 +355,12 @@ namespace Project_Algorithm
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            Asc_Dsc = !Asc_Dsc;
-            if (changeDisplay)
-                displayTag(a);
-            else
-                showList(a);
+            if (res != -1)
+            {
+                Asc_Dsc = !Asc_Dsc;
+                Sort();
+                CheckDisplay();
+            }
         }
     }
 }
