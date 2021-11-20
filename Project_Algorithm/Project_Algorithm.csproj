@@ -106,10 +106,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Resources\ARROW_UP.png" />
     <Content Include="Resources\book_blue_add.png" />
-    <Content Include="Resources\DOWN.png" />
     <Content Include="Resources\LOGO_UTE.png" />
+    <None Include="Resources\sorttt.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

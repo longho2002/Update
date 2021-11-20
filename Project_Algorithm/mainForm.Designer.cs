@@ -30,32 +30,30 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.PannelDisplayForm1 = new System.Windows.Forms.Panel();
+            this.listShow = new System.Windows.Forms.ListView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.CheckBoxChange = new System.Windows.Forms.CheckBox();
             this.CB_search = new System.Windows.Forms.ComboBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDisplay = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbSort = new System.Windows.Forms.ComboBox();
-            this.CheckBoxChange = new System.Windows.Forms.CheckBox();
-            this.listShow = new System.Windows.Forms.ListView();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.PannelDisplayForm1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // PannelDisplayForm1
@@ -69,6 +67,17 @@
             this.PannelDisplayForm1.Name = "PannelDisplayForm1";
             this.PannelDisplayForm1.Size = new System.Drawing.Size(1760, 491);
             this.PannelDisplayForm1.TabIndex = 0;
+            // 
+            // listShow
+            // 
+            this.listShow.FullRowSelect = true;
+            this.listShow.GridLines = true;
+            this.listShow.HideSelection = false;
+            this.listShow.Location = new System.Drawing.Point(34, 28);
+            this.listShow.Name = "listShow";
+            this.listShow.Size = new System.Drawing.Size(1687, 436);
+            this.listShow.TabIndex = 0;
+            this.listShow.UseCompatibleStateImageBehavior = false;
             // 
             // panel2
             // 
@@ -101,24 +110,12 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "PROJECT CUỐI KỲ";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(62, 107);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(174, 190);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 11;
-            this.pictureBox2.TabStop = false;
-            // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.CheckBoxChange);
             this.panel3.Controls.Add(this.CB_search);
-            this.panel3.Controls.Add(this.pictureBox4);
-            this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.label4);
@@ -133,6 +130,19 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1416, 350);
             this.panel3.TabIndex = 2;
+            // 
+            // CheckBoxChange
+            // 
+            this.CheckBoxChange.AutoSize = true;
+            this.CheckBoxChange.BackColor = System.Drawing.Color.Transparent;
+            this.CheckBoxChange.Font = new System.Drawing.Font("Arial", 20F);
+            this.CheckBoxChange.Location = new System.Drawing.Point(43, 283);
+            this.CheckBoxChange.Name = "CheckBoxChange";
+            this.CheckBoxChange.Size = new System.Drawing.Size(327, 36);
+            this.CheckBoxChange.TabIndex = 15;
+            this.CheckBoxChange.Text = "Hiển thị dạng danh sách";
+            this.CheckBoxChange.UseVisualStyleBackColor = false;
+            this.CheckBoxChange.CheckedChanged += new System.EventHandler(this.CheckBoxChange_CheckedChanged);
             // 
             // CB_search
             // 
@@ -153,28 +163,6 @@
             this.CB_search.Size = new System.Drawing.Size(210, 39);
             this.CB_search.TabIndex = 14;
             this.CB_search.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(452, 171);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(39, 39);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 13;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(403, 171);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(43, 39);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
             // 
             // label5
             // 
@@ -204,18 +192,6 @@
             this.label4.Size = new System.Drawing.Size(174, 31);
             this.label4.TabIndex = 9;
             this.label4.Text = "THÊM SÁCH";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(209, 125);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnDisplay
             // 
@@ -277,32 +253,42 @@
             this.cbSort.TabIndex = 0;
             this.cbSort.SelectedIndexChanged += new System.EventHandler(this.cbSort_SelectedIndexChanged);
             // 
-            // CheckBoxChange
+            // pictureBox3
             // 
-            this.CheckBoxChange.AutoSize = true;
-            this.CheckBoxChange.BackColor = System.Drawing.Color.Transparent;
-            this.CheckBoxChange.Font = new System.Drawing.Font("Arial", 20F);
-            this.CheckBoxChange.Location = new System.Drawing.Point(43, 283);
-            this.CheckBoxChange.Name = "CheckBoxChange";
-            this.CheckBoxChange.Size = new System.Drawing.Size(327, 36);
-            this.CheckBoxChange.TabIndex = 15;
-            this.CheckBoxChange.Text = "Hiển thị dạng danh sách";
-            this.CheckBoxChange.UseVisualStyleBackColor = false;
-            this.CheckBoxChange.CheckedChanged += new System.EventHandler(this.CheckBoxChange_CheckedChanged);
+            this.pictureBox3.Location = new System.Drawing.Point(411, 171);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(54, 39);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 16;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
-            // listShow
+            // pictureBox1
             // 
-            this.listShow.FullRowSelect = true;
-            this.listShow.GridLines = true;
-            this.listShow.HideSelection = false;
-            this.listShow.Location = new System.Drawing.Point(34, 28);
-            this.listShow.Name = "listShow";
-            this.listShow.Size = new System.Drawing.Size(1687, 436);
-            this.listShow.TabIndex = 0;
-            this.listShow.UseCompatibleStateImageBehavior = false;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(209, 125);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // Form1
+            // pictureBox2
             // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(62, 107);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(174, 190);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
+            // 
+            // mainForm
+            // 
+            this.AcceptButton = this.btnDisplay;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
@@ -310,18 +296,17 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.PannelDisplayForm1);
-            this.Name = "Form1";
+            this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project cuoi ky";
             this.PannelDisplayForm1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -343,11 +328,10 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ComboBox CB_search;
         private System.Windows.Forms.CheckBox CheckBoxChange;
         private System.Windows.Forms.ListView listShow;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

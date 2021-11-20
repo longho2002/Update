@@ -154,62 +154,6 @@ namespace Project_Algorithm
                 p = p.Next;
             }
         }
-        public void SortMaSach(int x)
-        {
-            // for loop thứ nhất
-            for (Node pTmp = this.root; pTmp != null; pTmp = pTmp.Next)
-            {
-                //for loop thứ hai
-                for (Node pTmp2 = pTmp.Next; pTmp2 != null; pTmp2 = pTmp2.Next)
-                {
-                    if (x == 0) // sap xep tang dan
-                    {
-                        if (String.Compare(pTmp.Data.MaSach, pTmp2.Data.MaSach, true) > 0)
-                        {
-                            book tmp = pTmp.Data;
-                            pTmp.Data = pTmp2.Data;
-                            pTmp2.Data = tmp;
-                        }
-                    }
-                    else if (x == 1) // sap xep giam dan
-                        if (String.Compare(pTmp.Data.MaSach, pTmp2.Data.MaSach, true) < 0)
-                        {
-                            book tmp = pTmp.Data;
-                            pTmp.Data = pTmp2.Data;
-                            pTmp2.Data = tmp;
-                        }
-
-                }
-            }
-        }
-        public void SortTenSach(int x)
-        {
-            // for loop thứ nhất
-            for (Node pTmp = this.root; pTmp != null; pTmp = pTmp.Next)
-            {
-                //for loop thứ hai
-                for (Node pTmp2 = pTmp.Next; pTmp2 != null; pTmp2 = pTmp2.Next)
-                {
-                    if (x == 0) // sap xep tang dan
-                    {
-                        if (String.Compare(pTmp.Data.TenSach, pTmp2.Data.TenSach, true) > 0)
-                        {
-                            book tmp = pTmp.Data;
-                            pTmp.Data = pTmp2.Data;
-                            pTmp2.Data = tmp;
-                        }
-                    }
-                    else if (x == 1) // sap xep giam dan
-                        if (String.Compare(pTmp.Data.TenSach, pTmp2.Data.TenSach, true) < 0)
-                        {
-                            book tmp = pTmp.Data;
-                            pTmp.Data = pTmp2.Data;
-                            pTmp2.Data = tmp;
-                        }
-
-                }
-            }
-        }
 
         public ListBook findTenSach(string s)
         {
@@ -334,6 +278,414 @@ namespace Project_Algorithm
                 p = p.Next;
             }
             return temp;
+        }
+        /// //////////////////////////////////////////////////////////////////////////////////////////////////
+        ///         COPPY TỪ ĐÂY TRỞ ĐI
+        ///         Bool x vào mỗi hàm sort : TRUE là tăng dần, FALSE là giảm dần.
+        ///         Tên tác giả so sánh tên -> tên đệm -> họ
+        ///         Còn các kiểu string còn lại so sánh từ ký tự đầu tiên
+        ///         CÁC KIỂU SORT SỬ DỤNG:
+        ///         - QuickSort (Mã sách)
+        ///         - MergeSort (Tên sách)
+        ///         - Sort thông thường (2 vòng lặp) (Tên tác giả, Vị trí, Ngày xuất bản)
+        ///         - SelectionSort (Giá)
+        ///         - InsertionSort (Chủ đề)
+        ///         - BubbleSort (Nhà xuất bản)
+        ///         
+
+        protected Node sorted; //InsertionSort sử dụng
+        public void MaSach_QuickSort(bool x)
+        {
+            Node n = root;
+            while (n.Next == null)
+                n = n.Next;
+            sort(root, n, x);
+        }
+        public void TenSach_MergeSort(bool x)
+        {
+            root = mergeSort(root, x);
+        }
+        public void TenTacGia_Sort(bool x)
+        {
+            // for loop thứ nhất
+            for (Node pTmp = root; pTmp != null; pTmp = pTmp.Next)
+            {
+                //for loop thứ hai
+                for (Node pTmp2 = pTmp.Next; pTmp2 != null; pTmp2 = pTmp2.Next)
+                {
+                    string[] arrListStr1 = pTmp.Data.TacGia.Split(' ');
+                    string[] arrListStr2 = pTmp2.Data.TacGia.Split(' ');
+
+                    if (x != false) // sap xep tang dan
+                    {
+                        if (String.Compare(arrListStr1[2], arrListStr2[2], true) > 0) // so sanh ten
+                        {
+                            book tmp = pTmp.Data;
+                            pTmp.Data = pTmp2.Data;
+                            pTmp2.Data = tmp;
+                        }
+                        else if (String.Compare(arrListStr1[2], arrListStr2[2], true) == 0) // Neu ten giong nhau
+                        {
+                            if (String.Compare(arrListStr1[1], arrListStr2[1], true) > 0) // so sanh ten dem
+                            {
+                                book tmp = pTmp.Data;
+                                pTmp.Data = pTmp2.Data;
+                                pTmp2.Data = tmp;
+                            }
+                            else if (String.Compare(arrListStr1[1], arrListStr2[1], true) == 0) // Neu ten dem giong nhau
+                            {
+                                if (String.Compare(arrListStr1[0], arrListStr2[0], true) > 0) // so sanh ho
+                                {
+                                    book tmp = pTmp.Data;
+                                    pTmp.Data = pTmp2.Data;
+                                    pTmp2.Data = tmp;
+                                }
+                            }
+                        }
+                    }
+                    else // sap xep giam dan
+                    {
+                        if (String.Compare(arrListStr1[2], arrListStr2[2], true) < 0) // so sanh ten
+                        {
+                            book tmp = pTmp.Data;
+                            pTmp.Data = pTmp2.Data;
+                            pTmp2.Data = tmp;
+                        }
+                        else if (String.Compare(arrListStr1[2], arrListStr2[2], true) == 0) // Neu ten giong nhau
+                        {
+                            if (String.Compare(arrListStr1[1], arrListStr2[1], true) < 0) // so sanh ten dem
+                            {
+                                book tmp = pTmp.Data;
+                                pTmp.Data = pTmp2.Data;
+                                pTmp2.Data = tmp;
+                            }
+                            else if (String.Compare(arrListStr1[1], arrListStr2[1], true) == 0) // Neu ten dem giong nhau
+                            {
+                                if (String.Compare(arrListStr1[0], arrListStr2[0], true) < 0) // so sanh ho
+                                {
+                                    book tmp = pTmp.Data;
+                                    pTmp.Data = pTmp2.Data;
+                                    pTmp2.Data = tmp;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        public void Gia_SelectionSort(bool x)
+        {
+            Node temp = root;
+
+            while (temp != null)
+            {
+                Node min_max = temp;
+                Node r = temp.Next;
+
+                while (r != null)
+                {
+                    if (x != false) // tang dan
+                    {
+                        if (min_max.Data.Price > r.Data.Price)
+                            min_max = r;
+                    }
+                    else  // giam dan
+                    {
+                        if (min_max.Data.Price < r.Data.Price)
+                            min_max = r;
+                    }
+
+                    r = r.Next;
+                }
+
+                book a = temp.Data;
+                temp.Data = min_max.Data;
+                min_max.Data = a;
+                temp = temp.Next;
+            }
+        }
+        public void ViTri_Sort(bool x)
+        {
+            // for loop thứ nhất
+            for (Node pTmp = root; pTmp != null; pTmp = pTmp.Next)
+            {
+                //for loop thứ hai
+                for (Node pTmp2 = pTmp.Next; pTmp2 != null; pTmp2 = pTmp2.Next)
+                {
+                    if (x != false) // sap xep tang dan
+                    {
+                        if (String.Compare(pTmp.Data.VT, pTmp2.Data.VT, true) > 0)
+                        {
+                            book tmp = pTmp.Data;
+                            pTmp.Data = pTmp2.Data;
+                            pTmp2.Data = tmp;
+                        }
+                    }
+                    else // sap xep giam dan
+                        if (String.Compare(pTmp.Data.VT, pTmp2.Data.VT, true) < 0)
+                    {
+                        book tmp = pTmp.Data;
+                        pTmp.Data = pTmp2.Data;
+                        pTmp2.Data = tmp;
+                    }
+
+                }
+            }
+        }
+        public void NgXB_Sort(bool x)
+        {
+            // for loop thứ nhất
+            for (Node pTmp = root; pTmp != null; pTmp = pTmp.Next)
+            {
+                //for loop thứ hai
+                for (Node pTmp2 = pTmp.Next; pTmp2 != null; pTmp2 = pTmp2.Next)
+                {
+                    if (x != false) // sap xep tang dan
+                    {
+                        if (DateTime.Compare(pTmp.Data.NgXB, pTmp2.Data.NgXB) > 0)
+                        {
+                            book tmp = pTmp.Data;
+                            pTmp.Data = pTmp2.Data;
+                            pTmp2.Data = tmp;
+                        }
+                    }
+                    else // sap xep giam dan
+                        if (DateTime.Compare(pTmp.Data.NgXB, pTmp2.Data.NgXB) < 0)
+                    {
+                        book tmp = pTmp.Data;
+                        pTmp.Data = pTmp2.Data;
+                        pTmp2.Data = tmp;
+                    }
+
+                }
+            }
+        }
+        public void ChuDe_InsertionSort(bool x)
+        {
+            sorted = null;
+            Node current = root;
+            while (current != null)
+            {
+                Node Next = current.Next;
+                sortedInsert(current, x);
+                current = Next;
+            }
+            root = sorted;
+        }
+        public void NXB_BubbleSort(bool x)
+        {
+            bool needRestart = true;
+            Node actualNode = root;
+
+            while (needRestart)
+            {
+                needRestart = false;
+                actualNode = root;
+                while (!needRestart && actualNode.Next != null)
+                {
+                    if (x != false)
+                    {
+                        if (String.Compare(actualNode.Next.Data.NXB, actualNode.Data.NXB, true) >= 0)
+                        {
+                            actualNode = actualNode.Next;
+                        }
+                        else
+                        {
+                            book tmp = actualNode.Data;
+                            actualNode.Data = actualNode.Next.Data;
+                            actualNode.Next.Data = tmp;
+                            needRestart = true;
+                        }
+                    }
+                    else
+                    {
+                        if (String.Compare(actualNode.Next.Data.NXB, actualNode.Data.NXB, true) < 0)
+                        {
+                            actualNode = actualNode.Next;
+                        }
+                        else
+                        {
+                            book tmp = actualNode.Data;
+                            actualNode.Data = actualNode.Next.Data;
+                            actualNode.Next.Data = tmp;
+                            needRestart = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        ///////    Hàm phụ phục vụ cho các sort
+        void sortedInsert(Node newNode, bool x)
+        {
+            if (x != false) // Sap xep tang dan
+            {
+                if (sorted == null || String.Compare(sorted.Data.ChuDe, newNode.Data.ChuDe, true) >= 0)
+                {
+                    newNode.Next = sorted;
+                    sorted = newNode;
+                }
+                else
+                {
+                    Node current = sorted;
+
+                    /* Xac dinh vi tri node truoc diem chen */
+                    while (current.Next != null &&
+                            String.Compare(sorted.Data.ChuDe, newNode.Data.ChuDe, true) < 0)
+                    {
+                        current = current.Next;
+                    }
+                    newNode.Next = current.Next;
+                    current.Next = newNode;
+                }
+            }
+            else // Sap xep giam dan
+            {
+                if (sorted == null || String.Compare(sorted.Data.ChuDe, newNode.Data.ChuDe, true) <= 0)
+                {
+                    newNode.Next = sorted;
+                    sorted = newNode;
+                }
+                else
+                {
+                    Node current = sorted;
+
+                    /* Xac dinh vi tri node truoc diem chen */
+                    while (current.Next != null &&
+                            String.Compare(sorted.Data.ChuDe, newNode.Data.ChuDe, true) > 0)
+                    {
+                        current = current.Next;
+                    }
+                    newNode.Next = current.Next;
+                    current.Next = newNode;
+                }
+            }
+        }
+        Node sortedMerge(Node a, Node b, bool x)
+        {
+            Node result = null;
+            if (a == null)
+                return b;
+            if (b == null)
+                return a;
+
+            if (x != false)
+            {
+                if (String.Compare(a.Data.TenSach, b.Data.TenSach, true) <= 0)
+                {
+                    result = a;
+                    result.Next = sortedMerge(a.Next, b, x);
+                }
+                else
+                {
+                    result = b;
+                    result.Next = sortedMerge(a, b.Next, x);
+                }
+            }
+            else
+            {
+                if (String.Compare(a.Data.TenSach, b.Data.TenSach, true) > 0)
+                {
+                    result = a;
+                    result.Next = sortedMerge(a.Next, b, x);
+                }
+                else
+                {
+                    result = b;
+                    result.Next = sortedMerge(a, b.Next, x);
+                }
+            }
+            return result;
+        }
+        Node mergeSort(Node h, bool x)
+        {
+            Node sortedlist;
+            if (h == null || h.Next == null)
+            {
+                return h;
+            }
+            Node middle = getMiddle(h);
+            Node Nextofmiddle = middle.Next;
+            middle.Next = null;
+
+            Node left = mergeSort(h, x);
+            Node right = mergeSort(Nextofmiddle, x);
+
+            sortedlist = sortedMerge(left, right, x);
+
+            return sortedlist;
+        }
+        Node getMiddle(Node h)
+        {
+            if (h == null)
+                return h;
+            Node fastptr = h.Next;
+            Node slowptr = h;
+
+            while (fastptr != null)
+            {
+                fastptr = fastptr.Next;
+                if (fastptr != null)
+                {
+                    slowptr = slowptr.Next;
+                    fastptr = fastptr.Next;
+                }
+            }
+            return slowptr;
+        }
+        Node paritionLast(Node start, Node end, bool x)
+        {
+            if (start == end || start == null || end == null)
+                return start;
+
+            Node pivot_prev = start;
+            Node curr = start;
+            book pivot = end.Data;
+            book temp;
+            while (start != end)
+            {
+                if (x != false)
+                {
+                    if (String.Compare(start.Data.MaSach, pivot.MaSach, true) < 0)
+                    {
+                        pivot_prev = curr;
+                        temp = curr.Data;
+                        curr.Data = start.Data;
+                        start.Data = temp;
+                        curr = curr.Next;
+                    }
+                }
+                else
+                {
+                    if (String.Compare(start.Data.MaSach, pivot.MaSach, true) > 0)
+                    {
+                        pivot_prev = curr;
+                        temp = curr.Data;
+                        curr.Data = start.Data;
+                        start.Data = temp;
+                        curr = curr.Next;
+                    }
+                }
+                start = start.Next;
+            }
+            temp = curr.Data;
+            curr.Data = pivot;
+            end.Data = temp;
+            return pivot_prev;
+        }
+        void sort(Node start, Node end, bool x)
+        {
+            if (start == end)
+                return;
+            Node pivot_prev = paritionLast(start, end, x);
+            sort(start, pivot_prev, x);
+
+            if (pivot_prev != null && pivot_prev == start)
+                sort(pivot_prev.Next, end, x);
+
+            else if (pivot_prev != null
+                     && pivot_prev.Next != null)
+                sort(pivot_prev.Next.Next, end, x);
         }
     }
 }

@@ -22,6 +22,7 @@ namespace Project_Algorithm
         public TextBox tb1 = new TextBox();
         public int chooseFind = -1;
         protected bool changeDisplay = true;
+        protected bool Asc_Dsc = true;
         public mainForm()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace Project_Algorithm
             listShow.Hide();
             showList(a);
             displayTag(a);
+            pictureBox3.Image = new Bitmap(Application.StartupPath + "\\Resources\\" + "sorttt.png");
         }
 
         private void pushData()
@@ -46,7 +48,7 @@ namespace Project_Algorithm
             a.Push(new book("011", "Đi tìm lẽ sống", "Viktor Frankl", "Tâm lý học", "Tổng Hợp ", 70200, "A-01", new DateTime(2016, 07, 01), Application.StartupPath + "\\Resources\\" + "di-tim-le-song.jpg"));
             a.Push(new book("012", "Phi lí một cách hợp lí", "Dan Ariely", "Tâm lý học", "Thế giới ", 74250, "A-02", new DateTime(2016, 08, 06), Application.StartupPath + "\\Resources\\" + "phi ly mot cach hop ly.jpg"));
             a.Push(new book("013", "Cánh đồng bất tận ", "Nguyễn Ngọc Tư", "Văn học", "Trẻ ", 68000, "A-06", new DateTime(2006, 1, 1), Application.StartupPath + "\\Resources\\" + "Canh-dong-bat-tan.jpg"));
-            a.Push(new book("014", "Tôi đi học", "Nguyễn Ngọc Kí", "Tự truyện", "Tổng hợp ", 43200, "A-05", new DateTime(2019, 09, 10), Application.StartupPath + "\\Resources\\" + "toi di hoc.jpg"));
+            a.Push(new book("014", "Tôi đi học", "Nguyễn Ngọc Ký", "Tự truyện", "Tổng hợp ", 43200, "A-05", new DateTime(2019, 09, 10), Application.StartupPath + "\\Resources\\" + "toi di hoc.jpg"));
             a.Push(new book("015", "Những tâm hồn dấu yêu", "Nguyễn Ngọc Ký", "Tự truyện", "Trẻ ", 99750, "A-04", new DateTime(2012, 02, 9), Application.StartupPath + "\\Resources\\" + "nhung_tam_hon_dau_yeu.jpg"));
             //a.Push(new book("016", "Để gió cuốn đi", "Ái Vân", "Văn học", "Phương Đông ", 168000, "A - 02",  new DateTime(2016, 05, 21),""));
             //a.Push(new book("017", "Cỗ máy thời gian", "H.G.WELLS", "Khoa học viễn tưởng", "Đông A ", 60000, "A-01", new DateTime(2018, 10, 10), ""));
@@ -60,11 +62,39 @@ namespace Project_Algorithm
             {
                 int res;
                 int.TryParse(cb.SelectedIndex.ToString(), out res);
-                if (res == 0)
-                    a.SortMaSach(0);
-                else if (res == 1)
-                    a.SortTenSach(0);
-                displayTag(a);
+                switch (res)
+                {
+                    case 0:
+                        a.MaSach_QuickSort(Asc_Dsc);
+                        break;
+                    case 1:
+                        a.TenSach_MergeSort(Asc_Dsc);
+                        break;
+                    case 2:
+                        a.TenTacGia_Sort(Asc_Dsc);
+                        break;
+                    case 3:
+                        a.NXB_BubbleSort(Asc_Dsc);
+                        break;
+                    case 4:
+                        a.Gia_SelectionSort(Asc_Dsc);
+                        break;
+                    case 5:
+                        a.ChuDe_InsertionSort(Asc_Dsc);
+                        break;
+                    case 6:
+                        a.ViTri_Sort(Asc_Dsc);
+                        break;
+                    case 7:
+                        {
+                            a.NgXB_Sort(Asc_Dsc);
+                            break;
+                        }
+                }
+                if (changeDisplay)
+                    displayTag(a);
+                else
+                    showList(a);
             }
         }
 
@@ -253,7 +283,6 @@ namespace Project_Algorithm
             b.ShowDialog();
             showList(a);
         }
-
         public void showForm(object sender, EventArgs e)
         {
             // luu tru dia chi hien tai
@@ -318,6 +347,15 @@ namespace Project_Algorithm
                 displayTag(a);
                 listShow.Hide();
             }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            Asc_Dsc = !Asc_Dsc;
+            if (changeDisplay)
+                displayTag(a);
+            else
+                showList(a);
         }
     }
 }
