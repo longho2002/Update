@@ -25,7 +25,7 @@ namespace Project_Algorithm
         void createTag()
         {
             Panel oldPannel = new Panel() { Width = 0, Height = 0, Location = new Point(0, 0) }; // lưu vị trí pannel cũ
-            Node t = Form1.a.getRoot();
+            Node t = mainForm.a.getRoot();
             int num = 1;
             while (t != null)
             {

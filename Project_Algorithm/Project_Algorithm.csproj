@@ -47,17 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="book.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="mainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAdd.Designer.cs">
-      <DependentUpon>FormAdd.cs</DependentUpon>
+    <Compile Include="mainForm.Designer.cs">
+      <DependentUpon>mainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormBook.cs">
       <SubType>Form</SubType>
@@ -72,14 +66,14 @@
       <DependentUpon>FormDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="ListBook.cs" />
+    <Compile Include="MyListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormAdd.resx">
-      <DependentUpon>FormAdd.cs</DependentUpon>
+    <EmbeddedResource Include="mainForm.resx">
+      <DependentUpon>mainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormBook.resx">
       <DependentUpon>FormBook.cs</DependentUpon>

@@ -14,15 +14,15 @@ using ContentAlignment = System.Drawing.ContentAlignment;
 namespace Project_Algorithm
 {
 
-    public partial class Form1 : Form
+    public partial class mainForm : Form
     {
         public static ListBook a = new ListBook();
         public static bool flag = true;
-        public static string slide;
+        public static string slideID;
         public TextBox tb1 = new TextBox();
         public int chooseFind = -1;
         protected bool changeDisplay = true;
-        public Form1()
+        public mainForm()
         {
             InitializeComponent();
             pushData();
@@ -172,9 +172,9 @@ namespace Project_Algorithm
                 };
                 lbTG.Text = ("Mã sách: " + i.MaSach + "--" + i.TenSach).ToString();
                 lbTG.Font = new Font("Arial", 10, FontStyle.Bold);
-                lbTG.Location = new Point(10, pic.Height + 10);
+                lbTG.Location = new Point(10, pic.Height + 5);
                 //lbTG.AutoSize = true;
-                lbTG.Padding = new Padding(20, 0, 0, 0);
+                lbTG.Padding = new Padding(10, 0, 0, 0);
 
                 // gán id cho từng pannel
                 Label id = new Label();
@@ -187,7 +187,6 @@ namespace Project_Algorithm
                 curPan.Controls.Add(pic);
                 curPan.Controls.Add(lbTG);
                 PannelDisplayForm1.Controls.Add(curPan);
-
                 // add event cho từng thuộc tính pannel con
                 curPan.Click += showForm;
                 pic.Click += showForm;
@@ -198,9 +197,13 @@ namespace Project_Algorithm
         }
         private void showList(ListBook b)
         {
+            PannelDisplayForm1.Controls.Clear();
+            PannelDisplayForm1.Controls.Add(listShow);
             listShow.Controls.Clear();
             listShow.Columns.Clear();
             listShow.Items.Clear();
+            listShow.MouseDoubleClick -= test;
+
             listShow.View = View.Details;
             listShow.Font = new Font("Arial", 15);
 
@@ -216,7 +219,7 @@ namespace Project_Algorithm
             listShow.Columns[6].TextAlign = HorizontalAlignment.Center;
             listShow.Columns[7].TextAlign = HorizontalAlignment.Center;
             Node t = b.getRoot();
-
+            listShow.MouseDoubleClick += test;
             while (t != null)
             {
                 ListViewItem item = new ListViewItem();
@@ -232,6 +235,25 @@ namespace Project_Algorithm
                 t = t.Next;
             }
         }
+        public void test(object sender, MouseEventArgs e)
+        {
+            // luu tru dia chi hien tai
+            flag = false;
+            for (int i = 0; i < listShow.Items.Count; i++)
+            {
+                var rectangle = listShow.GetItemRect(i);
+                if (rectangle.Contains(e.Location))
+                {
+                    slideID = listShow.Items[i].Text;
+                    break;
+                }
+            }
+            FormBook.choose = 1; // đổi cách hiển thị form book
+            FormBook b = new FormBook();
+            b.ShowDialog();
+            showList(a);
+        }
+
         public void showForm(object sender, EventArgs e)
         {
             // luu tru dia chi hien tai
@@ -251,12 +273,12 @@ namespace Project_Algorithm
             {
                 p = (sender as Label).Parent as Panel;
             }
-            slide = ""; // có tác dụng lưu pannel được chọn
+            slideID = ""; // có tác dụng lưu pannel được chọn
             foreach (Panel i in PannelDisplayForm1.Controls)
             {
                 if (i == p)
                 {
-                    slide = i.Controls[0].Text;
+                    slideID = i.Controls[0].Text;
                     break;
                 }
             }
@@ -288,6 +310,7 @@ namespace Project_Algorithm
             {
                 PannelDisplayForm1.Controls.Clear();
                 PannelDisplayForm1.Controls.Add(listShow);
+                showList(a);
                 listShow.Show();
             }
             else

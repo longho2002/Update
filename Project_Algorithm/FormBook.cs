@@ -18,6 +18,7 @@ namespace Project_Algorithm
         protected bool changeImg = false;
         protected int curNum = 0;
         public static int choose = 0;
+        protected string tmpName = "";
         public FormBook()
         {
             InitializeComponent();
@@ -47,7 +48,7 @@ namespace Project_Algorithm
 
         private void btnADD_Click(object sender, EventArgs e)
         {
-            if (Form1.a.findMaSach(textBox1.Text) != null)
+            if (mainForm.a.findMaSach(textBox1.Text).getRoot() != null)
             {
                 MessageBox.Show("Trùng Mã Sách", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -76,19 +77,23 @@ namespace Project_Algorithm
                     return;
                 }
 
-                Form1.a.Push(temp);
+                mainForm.a.Push(temp);
                 this.Close();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            curNode.Data.MaSach = tmpName != "" ? tmpName : curNode.Data.MaSach;
+            tmpName = "";
             this.Close();
         }
 
         private void btnAdjust_Click(object sender, EventArgs e)
         {
-            if (Form1.a.findMaSach(textBox1.Text) != null)
+            tmpName = curNode.Data.MaSach;
+            curNode.Data.MaSach = "wwww";
+            if (mainForm.a.findMaSach(textBox1.Text).getRoot() != null)
             {
                 MessageBox.Show("Trùng Mã Sách", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -117,13 +122,13 @@ namespace Project_Algorithm
         private void btnDelete_Click(object sender, EventArgs e)
         {
             choose = 0;
-            Form1.a.Remove(curNum);
+            mainForm.a.Remove(curNum);
             this.Close();
         }
         protected void showForm()
         {
             // kiểm tra chọn sửa hay thêm sách
-            if (Form1.flag == false)
+            if (mainForm.flag == false)
             {
                 btnADD.Hide();
                 int x = btnCan.Location.X;
@@ -155,9 +160,9 @@ namespace Project_Algorithm
 
         protected void UpdateUI()
         {
-            curNode = Form1.a.getRoot();
+            curNode = mainForm.a.getRoot();
             curNum = 0;
-            while (Form1.slide != curNode.Data.MaSach)
+            while (mainForm.slideID != curNode.Data.MaSach)
             {
                 curNode = curNode.Next;
                 curNum++;

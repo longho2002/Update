@@ -3,7 +3,6 @@ D:\Project _ck\Project_Algorithm\Project_Algorithm\bin\Debug\Project_Algorithm.e
 D:\Project _ck\Project_Algorithm\Project_Algorithm\bin\Debug\Project_Algorithm.pdb
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.csproj.AssemblyReference.cache
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.csproj.SuggestedBindingRedirects.cache
-D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.Form1.resources
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.Properties.Resources.resources
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.csproj.GenerateResource.cache
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.csproj.CoreCompileInputs.cache
@@ -11,4 +10,4 @@ D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.e
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.pdb
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.FormBook.resources
 D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.FormDisplay.resources
-D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.FormAdd.resources
+D:\Project _ck\Project_Algorithm\Project_Algorithm\obj\Debug\Project_Algorithm.mainForm.resources
