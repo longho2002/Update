@@ -63,7 +63,11 @@ namespace Project_Algorithm
             get { return this.imgSrc; }
             set { this.imgSrc = value; }
         }
-        public book() { }
+
+        public book()
+        {
+
+        }
         public book(string maSach, string tenSach, string TacGia, string ChuDe, string NXB, int price, string vt, DateTime NgXB, string imgSrc)
         {
             this.TenSach = tenSach;

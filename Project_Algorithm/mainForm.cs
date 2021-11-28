@@ -331,15 +331,8 @@ namespace Project_Algorithm
             FormBook.choose = 1; // đổi cách hiển thị form book
             FormBook b = new FormBook();
             b.ShowDialog();
-
-            if (FormBook.choose == 0) // kiểm tra lựa chọn từ  form book
-            {
-                PannelDisplayForm1.Controls.Remove(p);
-            }
-            else if (FormBook.choose == 1)
-            {
-                p.Controls[2].Text = ("Mã sách: " + FormBook.curNode.Data.MaSach + "--" + FormBook.curNode.Data.TenSach).ToString();
-            }
+            FormBook.curNode.Data.MaSach = FormBook.tmpName != "" ? FormBook.tmpName : FormBook.curNode.Data.MaSach;
+            CheckDisplay();
         }
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -370,6 +363,12 @@ namespace Project_Algorithm
                 Sort();
                 CheckDisplay();
             }
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            info infoForm = new info();
+            infoForm.ShowDialog();
         }
     }
 }

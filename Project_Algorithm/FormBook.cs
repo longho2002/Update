@@ -18,7 +18,7 @@ namespace Project_Algorithm
         protected bool changeImg = false;
         protected int curNum = 0;
         public static int choose = 0;
-        protected string tmpName = "";
+        public static string tmpName = "";
         public FormBook()
         {
             InitializeComponent();
@@ -91,9 +91,10 @@ namespace Project_Algorithm
 
         private void btnAdjust_Click(object sender, EventArgs e)
         {
-            tmpName = curNode.Data.MaSach;
+            if (tmpName == "")
+                tmpName = curNode.Data.MaSach;
             curNode.Data.MaSach = "wwww";
-            if (mainForm.a.findMaSach(textBox1.Text).getRoot() != null)
+            if (mainForm.a.CheckExistBook(textBox1.Text) == false)
             {
                 MessageBox.Show("Trùng Mã Sách", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -115,6 +116,7 @@ namespace Project_Algorithm
 
                     curNode.Data.NgXB = dateTimePicker1.Value;
                     if (changeImg) curNode.Data.ImgSrc = imageLocation;
+                    tmpName = "";
                 }
                 this.Close();
             }
@@ -179,5 +181,7 @@ namespace Project_Algorithm
             dateTimePicker1.Value = curNode.Data.NgXB;
             img.Image = new Bitmap(curNode.Data.ImgSrc);
         }
+
+
     }
 }

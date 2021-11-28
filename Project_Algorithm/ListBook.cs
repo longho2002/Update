@@ -42,7 +42,7 @@ namespace Project_Algorithm
         }
         public void PushBack(book t)
         {
-            if (this.root != null)
+            if (this.root == null)
                 this.root.Data = t;
             else
             {
@@ -202,6 +202,24 @@ namespace Project_Algorithm
                 p = p.Next;
             }
             return temp;
+        }
+        public bool CheckExistBook(string s)
+        {
+            int s1;
+            int s2;
+            book temp = new book() { };
+            if (int.TryParse(s, out s1) == false)
+                return false;
+            Node p = this.root;
+            while (p != null)
+            {
+                if (int.TryParse(p.Data.MaSach, out s2) == false && p.Data.MaSach != "wwww")
+                    return false;
+                if (s1 == s2)
+                   return false;
+                p = p.Next;
+            }
+            return true;
         }
         public ListBook findNXB(string s)
         {

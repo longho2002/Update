@@ -48,12 +48,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbSort = new System.Windows.Forms.ComboBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.PannelDisplayForm1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // PannelDisplayForm1
@@ -124,6 +127,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.CheckBoxChange);
             this.panel3.Controls.Add(this.CB_search);
@@ -144,6 +148,7 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(411, 171);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(54, 39);
@@ -196,7 +201,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(971, 284);
+            this.button2.Location = new System.Drawing.Point(769, 284);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(147, 45);
             this.button2.TabIndex = 10;
@@ -228,7 +233,7 @@
             // 
             // btnDisplay
             // 
-            this.btnDisplay.Location = new System.Drawing.Point(1167, 284);
+            this.btnDisplay.Location = new System.Drawing.Point(967, 283);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.Size = new System.Drawing.Size(147, 45);
             this.btnDisplay.TabIndex = 7;
@@ -240,7 +245,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.label3.Location = new System.Drawing.Point(156, 26);
+            this.label3.Location = new System.Drawing.Point(355, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(541, 46);
             this.label3.TabIndex = 6;
@@ -286,6 +291,27 @@
             this.cbSort.TabIndex = 0;
             this.cbSort.SelectedIndexChanged += new System.EventHandler(this.cbSort_SelectedIndexChanged);
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(1722, 916);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(26, 19);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 3;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 20F);
+            this.label8.Location = new System.Drawing.Point(566, 72);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(108, 32);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Nhóm 1";
+            // 
             // mainForm
             // 
             this.AcceptButton = this.btnDisplay;
@@ -293,9 +319,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(1767, 938);
+            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.PannelDisplayForm1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project cuoi ky";
@@ -307,6 +335,7 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -332,6 +361,8 @@
         private System.Windows.Forms.CheckBox CheckBoxChange;
         private System.Windows.Forms.ListView listShow;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label8;
     }
 }
 
